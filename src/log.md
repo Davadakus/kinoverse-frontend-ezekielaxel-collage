@@ -9,3 +9,10 @@
 - Linked the API key of TMDB to code
 - Successfully fetched data from TMDB (Need to segregate code though)
 - Updated Prettier file to also use tailwind plugin
+
+# Day 3 - 02/01/26
+
+- Moved code into `pages` (Frontend), `hooks` (Sets data obtained from api), `api` (Gets data from API and formats it), and `types` (For typescript declaration) folder
+- Basic home page layout made ready
+- Need to figure out how to display images correctly from the given path
+- Maybe an issue with storing the keys safely
