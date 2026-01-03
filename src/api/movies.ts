@@ -3,6 +3,9 @@ import type { Movie } from "../types/movie";
 const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 const AccessKey = import.meta.env.VITE_TMDB_ACCESS_TOKEN;
 
+console.log(apiKey);
+console.log(AccessKey);
+console.log(import.meta.env);
 // Returns list of Movies
 export async function fetchMovies(): Promise<Movie[]> {
   const options = {

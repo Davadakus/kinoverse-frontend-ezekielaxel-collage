@@ -16,3 +16,9 @@
 - Basic home page layout made ready
 - Need to figure out how to display images correctly from the given path
 - Maybe an issue with storing the keys safely
+
+# Day 4 - 03/01/26
+
+- MainScreen display Finished
+- MUI components used for the cards
+- Need to link to a page that has movie data now
