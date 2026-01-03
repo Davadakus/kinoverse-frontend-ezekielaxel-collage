@@ -30,10 +30,10 @@ export default function MainMenu() {
                   alignItems: "center",
                   textAlign: "center",
                   color: "white",
-                  bgcolor: "#333333",
+                  bgcolor: "#1E1E1E",
                   transition: "background-color 0.3s",
                   "&:hover": {
-                    bgcolor: "rgb(95, 93, 95)",
+                    bgcolor: "rgb(40, 40, 40)",
                   },
                 }}
               >
@@ -43,6 +43,12 @@ export default function MainMenu() {
                     height="140"
                     src={`https://media.themoviedb.org/t/p/w220_and_h330_face/${movie.poster_path}`}
                     alt="movie poster"
+                    sx={{
+                      transition: "filter 0.3s",
+                      "&:hover": {
+                        filter: "brightness(50%)",
+                      },
+                    }}
                   />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
