@@ -11,6 +11,6 @@ export function useMovies() {
       .then(setMovies)
       .finally(() => setLoading(false));
   }, []);
-
+  // console.log(movies);
   return { movies, loading };
 }

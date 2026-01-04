@@ -3,12 +3,12 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import TestPage from "./Pages/TestPage.tsx";
-import MainMenu from "./Pages/MainMenu.tsx";
+import MainScreen from "./Pages/MainScreen.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <MainMenu />,
+    element: <MainScreen />,
     // errorElement: <Error />,
   },
   {
