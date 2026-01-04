@@ -20,5 +20,8 @@
 # Day 4 - 03/01/26
 
 - MainScreen display Finished
-- MUI components used for the cards
-- Need to link to a page that has movie data now
+- Prototype MovieDisplay Screen
+- MUI components used for the cards and Text
+- Probably need to make new component for the suggestion movies
+- Need to figure out a good approach for making loading states look good
+- 45+45+45+15+15
