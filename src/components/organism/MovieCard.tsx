@@ -23,35 +23,20 @@ export default function MovieCard({ movie }: MovieCardProps) {
       }}
     >
       <Link
-        to="/test"
+        to={`/movie/${movie.id}`}
         className="brightness-100 duration-300 hover:brightness-125"
       >
         <CardMedia
           component="img"
           height="140"
-          src={`https://media.themoviedb.org/t/p/w220_and_h330_face/${movie.poster_path}`}
+          src={`https://media.themoviedb.org/t/p/original/${movie.poster_path}`}
           alt="movie poster"
         />
         <CardContent>
-          <Typography
-            gutterBottom
-            variant="h5"
-            component="div"
-            sx={{
-              fontWeight: "bold",
-              marginBottom: 0,
-            }}
-          >
+          <Typography variant="h5" component="div" fontWeight="bold">
             {movie.title}
           </Typography>
-          <Typography
-            gutterBottom
-            variant="subtitle1"
-            component="div"
-            sx={{
-              marginBottom: 0,
-            }}
-          >
+          <Typography variant="subtitle1" component="div">
             {movie.release_date.slice(0, 4)}
           </Typography>
           <Typography

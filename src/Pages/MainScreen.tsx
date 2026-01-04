@@ -14,7 +14,7 @@ export default function MainScreen() {
         ) : (
           <div className="grid grid-flow-row grid-cols-4 gap-20 text-white">
             {movies.map((movie) => (
-              <MovieCard movie={movie} />
+              <MovieCard key={movie.id} movie={movie} />
             ))}
           </div>
         )}
