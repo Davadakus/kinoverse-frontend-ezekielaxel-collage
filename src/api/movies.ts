@@ -11,13 +11,14 @@ const options = {
   },
 };
 // Returns list of Movies
-export async function fetchMovies(): Promise<Movie[]> {
+export async function getMovies(): Promise<Movie[]> {
   const response = await fetch(
     `https://api.themoviedb.org/3/discover/movie?with_genres=878&api_key=${apiKey}`,
     options,
   );
 
   const data = await response.json();
+  console.log("Recommendation");
   console.log(data);
 
   if (!response.ok) {
@@ -36,6 +37,20 @@ export async function getMovieById(id: number): Promise<Movie> {
 
   if (!response.ok) throw new Error("Failed to fetch movie");
   const data = await response.json();
+  console.log("ById");
   console.log(data);
   return data;
+}
+
+export async function getMovieRecommendation(id: number): Promise<Movie[]> {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${apiKey}`,
+    options,
+  );
+
+  if (!response.ok) throw new Error("Failed to fetch movie recommendations");
+  const data = await response.json();
+  console.log("Recommendation");
+  console.log(data.results);
+  return data.results;
 }

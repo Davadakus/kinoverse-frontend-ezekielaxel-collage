@@ -33,7 +33,17 @@ export default function MovieSuggestion({ movie }: MovieSuggestionProps) {
           sx={{ maxHeight: 240 }}
         />
         <CardContent>
-          <Typography variant="subtitle1" component="div" fontWeight="bold">
+          <Typography
+            variant="subtitle1"
+            component="div"
+            fontWeight="bold"
+            sx={{
+              display: "-webkit-box",
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: "vertical",
+              overflow: "hidden",
+            }}
+          >
             {movie.title}
           </Typography>
           <Typography gutterBottom variant="subtitle2" component="div">

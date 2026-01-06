@@ -4,13 +4,13 @@ import type { Movie } from "../types/movie";
 
 export function useMovieById(id: number) {
   const [movie, setMovie] = useState<Movie | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loadingMovieBId, setLoadingMovieBId] = useState(true);
 
   useEffect(() => {
     getMovieById(id)
       .then(setMovie)
-      .finally(() => setLoading(false));
+      .finally(() => setLoadingMovieBId(false));
   }, [id]);
 
-  return { movie, loading };
+  return { movie, loadingMovieBId };
 }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchMovies } from "../api/movies";
+import { getMovies } from "../api/movies";
 import type { Movie } from "../types/movie";
 
 export function useMovies() {
@@ -7,7 +7,7 @@ export function useMovies() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchMovies()
+    getMovies()
       .then(setMovies)
       .finally(() => setLoading(false));
   }, []);
