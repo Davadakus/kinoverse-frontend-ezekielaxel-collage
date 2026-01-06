@@ -30,9 +30,9 @@
 
 - Movie Suggestion Card
 - Emotional Filter Component
+- Movie suggestions done
 - Loading states right now are low prio rather get important features done
 - Future need to decrease size of the movie description box, too horizontally long
 - Maybe add a back arrow button (Low Prio)
 - Need to do functionality for the filter with local storage
-- Movie suggestions done
 - 45+45+45+20
