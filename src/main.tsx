@@ -1,10 +1,12 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./index.css";
+import "./style/index.css";
 import TestPage from "./Pages/TestPage.tsx";
 import MainScreen from "./Pages/MainScreen.tsx";
 import MovieDisplay from "./Pages/MovieDisplay.tsx";
+import { ThemeProvider } from "@emotion/react";
+import { theme } from "./style/theme.ts";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +26,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <ThemeProvider theme={theme}>
+      <RouterProvider router={router}></RouterProvider>
+    </ThemeProvider>
   </StrictMode>,
 );

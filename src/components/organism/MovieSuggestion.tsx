@@ -2,18 +2,18 @@ import { Card, CardMedia, CardContent, Typography } from "@mui/material";
 import type { Movie } from "../../types/movie";
 import { Link } from "react-router-dom";
 
-interface MovieCardProps {
+interface MovieSuggestionProps {
   movie: Movie;
 }
 
-export default function MovieCard({ movie }: MovieCardProps) {
+export default function MovieSuggestion({ movie }: MovieSuggestionProps) {
   return (
     <Card
       sx={{
-        maxWidth: 345,
-        justifyContent: "center",
-        alignItems: "center",
-        textAlign: "center",
+        maxWidth: 220,
+        border: 1,
+        borderColor: "#e7e5e4",
+        padding: 1,
         color: "white",
         bgcolor: "surface.foreground",
         transition: "background-color 0.3s",
@@ -28,19 +28,19 @@ export default function MovieCard({ movie }: MovieCardProps) {
       >
         <CardMedia
           component="img"
-          height="140"
           src={`https://media.themoviedb.org/t/p/original/${movie.poster_path}`}
-          alt="movie poster"
+          alt="movie suggestion"
+          sx={{ maxHeight: 240 }}
         />
         <CardContent>
-          <Typography variant="h5" component="div" fontWeight="bold">
+          <Typography variant="subtitle1" component="div" fontWeight="bold">
             {movie.title}
           </Typography>
-          <Typography variant="subtitle1" component="div">
+          <Typography gutterBottom variant="subtitle2" component="div">
             {movie.release_date.slice(0, 4)}
           </Typography>
           <Typography
-            variant="body2"
+            variant="caption"
             sx={{
               display: "-webkit-box",
               WebkitLineClamp: 2,

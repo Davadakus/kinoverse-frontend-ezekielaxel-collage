@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useMovieById } from "../hook/useMovieById";
 import { Typography } from "@mui/material";
 import MovieCard from "../components/organism/MovieCard";
+import MovieSuggestion from "../components/organism/MovieSuggestion";
 
 export default function MovieDisplay() {
   const { id } = useParams<{ id: string }>();
@@ -11,13 +12,13 @@ export default function MovieDisplay() {
   if (!movie) return <div>Movie not found</div>;
 
   return (
-    <div className="m-10">
+    <div className="mx-3">
       <div className="flex p-5">
         <div className="space-y-5">
           <img
             src={`https://media.themoviedb.org/t/p/original${movie.poster_path}`}
             alt={movie.title}
-            className="max-w-80"
+            className="max-w-70"
           />
           <div className="border"> Emotion Section </div>
         </div>
@@ -35,14 +36,43 @@ export default function MovieDisplay() {
         <Typography gutterBottom variant="h5" component="div" fontWeight="bold">
           Similar Movies
         </Typography>
-        <ul className="grid grid-flow-row grid-cols-6 gap-8">
-          <MovieCard movie={movie} />
-          <MovieCard movie={movie} />
-          <MovieCard movie={movie} />
-          <MovieCard movie={movie} />
-          <MovieCard movie={movie} />
-          <MovieCard movie={movie} />
-          <MovieCard movie={movie} />
+        <ul className="mx-10 my-2 grid grid-flow-row grid-cols-6 gap-10">
+          <li>
+            <MovieSuggestion movie={movie} />
+          </li>
+          <li>
+            <MovieSuggestion movie={movie} />
+          </li>
+          <li>
+            <MovieSuggestion movie={movie} />
+          </li>
+          <li>
+            <MovieSuggestion movie={movie} />
+          </li>
+          <li>
+            <MovieSuggestion movie={movie} />
+          </li>
+          <li>
+            <MovieSuggestion movie={movie} />
+          </li>
+          {/* <li>
+            <MovieSuggestion movie={movie} />
+          </li>
+          <li>
+            <MovieSuggestion movie={movie} />
+          </li>
+          <li>
+            <MovieSuggestion movie={movie} />
+          </li>
+          <li>
+            <MovieSuggestion movie={movie} />
+          </li>
+          <li>
+            <MovieSuggestion movie={movie} />
+          </li>
+          <li>
+            <MovieSuggestion movie={movie} />
+          </li> */}
         </ul>
       </div>
     </div>

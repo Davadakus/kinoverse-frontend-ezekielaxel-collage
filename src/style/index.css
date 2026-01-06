@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@layer base {
+    :root {
+        --bg-default: #121212;
+    }
+    body {
+        color: white;
+        background-color: var(--bg-default);
+    }
+}

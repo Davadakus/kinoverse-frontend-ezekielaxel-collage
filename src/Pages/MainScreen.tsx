@@ -1,18 +1,20 @@
 import { useMovies } from "../hook/useMovies";
 import MovieCard from "../components/organism/MovieCard";
-import MainScreenTitle from "../components/molecules/MainScreenTitle";
+import MainScreenHeader from "../components/molecules/MainScreenHeader";
+import EmotionalFilter from "../components/molecules/EmotionalFilter";
 
 export default function MainScreen() {
   const { movies, loading } = useMovies();
 
   return (
     <div className="flex h-screen flex-col">
-      <MainScreenTitle />
+      <MainScreenHeader />
+      <EmotionalFilter />
       <div className="mx-30">
         {loading ? (
-          <div className="text-white">Loading...</div>
+          <div>Loading...</div>
         ) : (
-          <div className="grid grid-flow-row grid-cols-4 gap-20 text-white">
+          <div className="grid grid-flow-row grid-cols-4 gap-20">
             {movies.map((movie) => (
               <MovieCard key={movie.id} movie={movie} />
             ))}

@@ -17,7 +17,7 @@
 - Need to figure out how to display images correctly from the given path
 - Maybe an issue with storing the keys safely
 
-# Day 4 - 03/01/26
+# Day 4 - 04/01/26
 
 - MainScreen display Finished
 - Prototype MovieDisplay Screen
@@ -25,3 +25,7 @@
 - Probably need to make new component for the suggestion movies
 - Need to figure out a good approach for making loading states look good
 - 45+45+45+15+15
+
+# Day 5
+
+- Movie Suggestion Card
