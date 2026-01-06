@@ -26,6 +26,13 @@
 - Need to figure out a good approach for making loading states look good
 - 45+45+45+15+15
 
-# Day 5
+# Day 5 - 06/01/26
 
 - Movie Suggestion Card
+- Emotional Filter Component
+- Loading states right now are low prio rather get important features done
+- Future need to decrease size of the movie description box, too horizontally long
+- Maybe add a back arrow button (Low Prio)
+- Need to do functionality for the filter with local storage
+- Movie suggestions need to be done as well
+- 45+45+45+20
