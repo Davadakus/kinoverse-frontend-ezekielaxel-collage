@@ -1,7 +1,10 @@
 import { ToggleButtonGroup, ToggleButton, Typography } from "@mui/material";
-
 import React from "react";
 import Emoji from "../atoms/Emoji";
+
+interface EmotionalFilterProps {
+  className?: string;
+}
 
 const selectedStyle = {
   "&.Mui-selected": {
@@ -9,7 +12,7 @@ const selectedStyle = {
   },
 };
 
-export default function EmotionalFilter() {
+export default function EmotionalFilter({ className }: EmotionalFilterProps) {
   const [formats, setFormats] = React.useState(() => ["bold", "italic"]);
 
   const handleFormat = (
@@ -20,7 +23,7 @@ export default function EmotionalFilter() {
   };
 
   return (
-    <div className="mx-15 my-5 flex">
+    <div className={className}>
       <div className="flex flex-col">
         <Typography
           variant="subtitle1"
@@ -36,7 +39,23 @@ export default function EmotionalFilter() {
           aria-label="text formatting"
           sx={{ bgcolor: "surface.foreground", margin: 0.5 }}
         >
-          <ToggleButton value="happy" aria-label="happy" sx={selectedStyle}>
+          {[
+            { value: "happy", emoji: "😊" },
+            { value: "sad", emoji: "😢" },
+            { value: "mind-blown", emoji: "🤯" },
+            { value: "cosy", emoji: "🕯️" },
+            { value: "scary", emoji: "😨" },
+            { value: "motivational", emoji: "💪" },
+          ].map((item) => (
+            <ToggleButton
+              key={item.value}
+              value={item.value}
+              sx={selectedStyle}
+            >
+              <Emoji>{item.emoji}</Emoji>
+            </ToggleButton>
+          ))}
+          {/* <ToggleButton value="happy" aria-label="happy" sx={selectedStyle}>
             <Emoji>😊</Emoji>
           </ToggleButton>
           <ToggleButton value="sad" aria-label="sad" sx={selectedStyle}>
@@ -61,7 +80,7 @@ export default function EmotionalFilter() {
             sx={selectedStyle}
           >
             <Emoji>💪</Emoji>
-          </ToggleButton>
+          </ToggleButton> */}
         </ToggleButtonGroup>
       </div>
     </div>

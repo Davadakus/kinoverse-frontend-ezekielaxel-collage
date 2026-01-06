@@ -3,6 +3,7 @@ import { useMovieById } from "../hook/useMovieById";
 import { Typography } from "@mui/material";
 import MovieCard from "../components/organism/MovieCard";
 import MovieSuggestion from "../components/organism/MovieSuggestion";
+import EmotionalFilter from "../components/molecules/EmotionalFilter";
 
 export default function MovieDisplay() {
   const { id } = useParams<{ id: string }>();
@@ -20,16 +21,20 @@ export default function MovieDisplay() {
             alt={movie.title}
             className="max-w-70"
           />
-          <div className="border"> Emotion Section </div>
         </div>
-        <div className="m-5 space-y-5">
-          <div className="flex flex-row font-bold">
-            <Typography variant="h4" component="div" fontWeight="bold">
+        <div className="m-5 flex flex-col justify-between">
+          <div className="flex flex-col">
+            <Typography
+              gutterBottom
+              variant="h4"
+              component="div"
+              fontWeight="bold"
+            >
               {movie.title} ({movie.release_date.slice(0, 4)})
             </Typography>
+            <Typography variant="body1">{movie.overview}</Typography>
           </div>
-          <Typography variant="body1">{movie.overview}</Typography>
-          <div className="border"> Emotional Rating</div>
+          <EmotionalFilter className="flex" />
         </div>
       </div>
       <div className="flex flex-col rounded-xl bg-neutral-800 p-4">

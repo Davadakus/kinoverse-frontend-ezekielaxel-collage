@@ -9,7 +9,7 @@ export default function MainScreen() {
   return (
     <div className="flex h-screen flex-col">
       <MainScreenHeader />
-      <EmotionalFilter />
+      <EmotionalFilter className="mx-15 my-5 flex" />
       <div className="mx-30">
         {loading ? (
           <div>Loading...</div>
