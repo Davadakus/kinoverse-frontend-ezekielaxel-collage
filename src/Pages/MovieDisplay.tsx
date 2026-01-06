@@ -34,7 +34,7 @@ export default function MovieDisplay() {
             </Typography>
             <Typography variant="body1">{movie.overview}</Typography>
           </div>
-          <EmotionalFilter className="flex" />
+          <EmotionalFilter label="Rating:" className="flex" />
         </div>
       </div>
       <div className="flex flex-col rounded-xl bg-neutral-800 p-4">

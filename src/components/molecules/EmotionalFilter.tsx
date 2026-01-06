@@ -4,15 +4,13 @@ import Emoji from "../atoms/Emoji";
 
 interface EmotionalFilterProps {
   className?: string;
+  label: string;
 }
 
-const selectedStyle = {
-  "&.Mui-selected": {
-    bgcolor: "surface.hover",
-  },
-};
-
-export default function EmotionalFilter({ className }: EmotionalFilterProps) {
+export default function EmotionalFilter({
+  className,
+  label,
+}: EmotionalFilterProps) {
   const [formats, setFormats] = React.useState(() => ["bold", "italic"]);
 
   const handleFormat = (
@@ -30,7 +28,7 @@ export default function EmotionalFilter({ className }: EmotionalFilterProps) {
           component="div"
           sx={{ marginBlock: "auto" }}
         >
-          Filter:
+          {label}
         </Typography>
 
         <ToggleButtonGroup
@@ -50,37 +48,15 @@ export default function EmotionalFilter({ className }: EmotionalFilterProps) {
             <ToggleButton
               key={item.value}
               value={item.value}
-              sx={selectedStyle}
+              sx={{
+                "&.Mui-selected": {
+                  bgcolor: "surface.hover",
+                },
+              }}
             >
               <Emoji>{item.emoji}</Emoji>
             </ToggleButton>
           ))}
-          {/* <ToggleButton value="happy" aria-label="happy" sx={selectedStyle}>
-            <Emoji>😊</Emoji>
-          </ToggleButton>
-          <ToggleButton value="sad" aria-label="sad" sx={selectedStyle}>
-            <Emoji>😢</Emoji>
-          </ToggleButton>
-          <ToggleButton
-            value="mind-blown"
-            aria-label="mind-blown"
-            sx={selectedStyle}
-          >
-            <Emoji>🤯</Emoji>
-          </ToggleButton>
-          <ToggleButton value="cozy" aria-label="cozy" sx={selectedStyle}>
-            <Emoji>🕯️</Emoji>
-          </ToggleButton>
-          <ToggleButton value="scary" aria-label="scary" sx={selectedStyle}>
-            <Emoji>😨</Emoji>
-          </ToggleButton>
-          <ToggleButton
-            value="motivational"
-            aria-label="motivational"
-            sx={selectedStyle}
-          >
-            <Emoji>💪</Emoji>
-          </ToggleButton> */}
         </ToggleButtonGroup>
       </div>
     </div>
