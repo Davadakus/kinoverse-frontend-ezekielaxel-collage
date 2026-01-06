@@ -34,5 +34,5 @@
 - Future need to decrease size of the movie description box, too horizontally long
 - Maybe add a back arrow button (Low Prio)
 - Need to do functionality for the filter with local storage
-- Movie suggestions need to be done as well
+- Movie suggestions done
 - 45+45+45+20
