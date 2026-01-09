@@ -33,7 +33,7 @@ export default function DisplayMovieMain({ movie }: DisplayMovieMainProps) {
         <EmotionalFilter
           label="Rating:"
           className="flex"
-          value={movieEmotion?.userEmotion}
+          value={movieEmotion}
           onChange={setMovieEmotion}
         />
       </div>

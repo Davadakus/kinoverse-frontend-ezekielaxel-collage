@@ -1,12 +1,12 @@
 import { ToggleButtonGroup, ToggleButton, Typography } from "@mui/material";
 import React from "react";
 import Emoji from "../atoms/Emoji";
-import type { Emotion } from "../../types/emotion";
+import type { Emotion, MovieEmotionData } from "../../types/emotion";
 
 interface EmotionalFilterProps {
   className?: string;
   label: string;
-  value?: Emotion[];
+  value?: MovieEmotionData;
   onChange?: (userEmotion: Emotion[]) => void;
 }
 
@@ -16,15 +16,6 @@ export default function EmotionalFilter({
   value,
   onChange,
 }: EmotionalFilterProps) {
-  // const [formats, setFormats] = React.useState(() => ["bold", "italic"]);
-
-  // const handleFormat = (
-  //   _event: React.MouseEvent<HTMLElement>,
-  //   newFormats: string[],
-  // ) => {
-  //   setFormats(newFormats);
-  // };
-
   const handleChange = (
     _event: React.MouseEvent<HTMLElement>,
     newEmotions: Emotion[],
@@ -44,7 +35,7 @@ export default function EmotionalFilter({
         </Typography>
 
         <ToggleButtonGroup
-          value={value}
+          value={value?.userEmotion}
           onChange={handleChange}
           aria-label="text formatting"
           sx={{ bgcolor: "surface.foreground", margin: 0.5 }}
@@ -66,7 +57,11 @@ export default function EmotionalFilter({
                 },
               }}
             >
-              <Emoji>{item.emoji}</Emoji>
+              <Emoji>
+                {item.emoji} ({value?.emotionCounts[item.value as Emotion] ?? 0}
+                )
+              </Emoji>
+              <div> </div>
             </ToggleButton>
           ))}
         </ToggleButtonGroup>

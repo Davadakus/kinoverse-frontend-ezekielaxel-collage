@@ -49,3 +49,6 @@
 - you can `setItem({key})` and then call it using `getItem({key})`
 - That means i'm going to create a template data type:
 - localStorage --> MovieRecord<Movie, MovieEmotionDataRecord> --> MovieEmotionDataRecord<Emotion, count>
+- Successfully implemented the function rate a movie and also show the counter
+- Need to seperate the filter function and the rate function, right now it uses the exact same component
+- The component itself has the same UI but a different functionality, so not sure how to divide the component
