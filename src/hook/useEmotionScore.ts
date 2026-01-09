@@ -45,11 +45,13 @@ export function useMovieEmotions(movieId: number) {
 
       for (const e of added) {
         newCounts[e] += 1;
+        console.log(e + " Added");
       }
 
       for (const e of removed) {
         // newCounts[e] = Math.max(0, newCounts[e] - 1);
         newCounts[e] -= 1;
+        console.log(e + " Removed");
       }
 
       return {
