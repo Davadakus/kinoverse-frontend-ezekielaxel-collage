@@ -1,12 +1,14 @@
 import { Typography } from "@mui/material";
 import type { Movie } from "../../types/movie";
 import EmotionalFilter from "../molecules/EmotionalFilter";
+import { useMovieEmotions } from "../../hook/useEmotionScore";
 
 interface DisplayMovieMainProps {
   movie: Movie;
 }
 
 export default function DisplayMovieMain({ movie }: DisplayMovieMainProps) {
+  const { movieEmotion, setMovieEmotion } = useMovieEmotions(movie.id);
   return (
     <div className="flex p-5">
       <div className="space-y-5">
@@ -28,7 +30,12 @@ export default function DisplayMovieMain({ movie }: DisplayMovieMainProps) {
           </Typography>
           <Typography variant="body1">{movie.overview}</Typography>
         </div>
-        <EmotionalFilter label="Rating:" className="flex" />
+        <EmotionalFilter
+          label="Rating:"
+          className="flex"
+          value={movieEmotion?.userEmotion}
+          onChange={setMovieEmotion}
+        />
       </div>
     </div>
   );

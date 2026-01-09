@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useMovieById } from "../hook/useMovieById";
 import { Typography } from "@mui/material";
-import EmotionalFilter from "../components/molecules/EmotionalFilter";
 import { useMovieRecommendations } from "../hook/useMovieRecommendation";
 import MovieSuggestion from "../components/organism/MovieSuggestion";
 import DisplayMovieMain from "../components/organism/DisplayMovieMain";

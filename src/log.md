@@ -36,3 +36,16 @@
 - Maybe add a back arrow button (Low Prio)
 - Need to do functionality for the filter with local storage
 - 45+45+45+20
+
+# Day 6 - 07/01/26
+
+- Figure out how localstorage works
+- Like a database for the system ig thats stored on the frontend?
+- Each user has unique one
+
+# Day 7 - 09/01/26
+
+- Localstorage seems like a global variable that is basically functions as a dictionary
+- you can `setItem({key})` and then call it using `getItem({key})`
+- That means i'm going to create a template data type:
+- localStorage --> MovieRecord<Movie, MovieEmotionDataRecord> --> MovieEmotionDataRecord<Emotion, count>

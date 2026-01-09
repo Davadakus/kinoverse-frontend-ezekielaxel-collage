@@ -1,23 +1,35 @@
 import { ToggleButtonGroup, ToggleButton, Typography } from "@mui/material";
 import React from "react";
 import Emoji from "../atoms/Emoji";
+import type { Emotion } from "../../types/emotion";
 
 interface EmotionalFilterProps {
   className?: string;
   label: string;
+  value?: Emotion[];
+  onChange?: (userEmotion: Emotion[]) => void;
 }
 
 export default function EmotionalFilter({
   className,
   label,
+  value,
+  onChange,
 }: EmotionalFilterProps) {
-  const [formats, setFormats] = React.useState(() => ["bold", "italic"]);
+  // const [formats, setFormats] = React.useState(() => ["bold", "italic"]);
 
-  const handleFormat = (
+  // const handleFormat = (
+  //   _event: React.MouseEvent<HTMLElement>,
+  //   newFormats: string[],
+  // ) => {
+  //   setFormats(newFormats);
+  // };
+
+  const handleChange = (
     _event: React.MouseEvent<HTMLElement>,
-    newFormats: string[],
+    newEmotions: Emotion[],
   ) => {
-    setFormats(newFormats);
+    onChange?.(newEmotions);
   };
 
   return (
@@ -32,16 +44,16 @@ export default function EmotionalFilter({
         </Typography>
 
         <ToggleButtonGroup
-          value={formats}
-          onChange={handleFormat}
+          value={value}
+          onChange={handleChange}
           aria-label="text formatting"
           sx={{ bgcolor: "surface.foreground", margin: 0.5 }}
         >
           {[
             { value: "happy", emoji: "😊" },
             { value: "sad", emoji: "😢" },
-            { value: "mind-blown", emoji: "🤯" },
-            { value: "cosy", emoji: "🕯️" },
+            { value: "mindBlown", emoji: "🤯" },
+            { value: "cozy", emoji: "🕯️" },
             { value: "scary", emoji: "😨" },
             { value: "motivational", emoji: "💪" },
           ].map((item) => (
