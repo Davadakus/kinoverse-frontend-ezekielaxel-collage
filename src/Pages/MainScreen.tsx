@@ -1,15 +1,20 @@
 import { useMovies } from "../hook/useMovies";
 import MovieCard from "../components/organism/MovieCard";
 import MainScreenHeader from "../components/molecules/MainScreenHeader";
-import EmotionalFilter from "../components/molecules/EmotionalFilter";
+import EmotionButtonStore from "../components/molecules/EmotionButtonStore";
+// import { useState } from "react";
 
 export default function MainScreen() {
   const { movies, loading } = useMovies();
-
+  // const { filter, setFilter } = useState(false);
   return (
     <div className="flex h-screen flex-col">
       <MainScreenHeader />
-      <EmotionalFilter label="Filter:" className="mx-15 my-5 flex" />
+      <EmotionButtonStore
+        type="filter"
+        label="Filter:"
+        className="mx-15 my-5 flex"
+      />
       <div className="mx-30">
         {loading ? (
           <div>Loading...</div>

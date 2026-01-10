@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import type { Movie } from "../../types/movie";
-import EmotionalFilter from "../molecules/EmotionalFilter";
+import EmotionButtonStore from "../molecules/EmotionButtonStore";
 import { useMovieEmotions } from "../../hook/useEmotionScore";
 
 interface DisplayMovieMainProps {
@@ -30,7 +30,8 @@ export default function DisplayMovieMain({ movie }: DisplayMovieMainProps) {
           </Typography>
           <Typography variant="body1">{movie.overview}</Typography>
         </div>
-        <EmotionalFilter
+        <EmotionButtonStore
+          type="rating"
           label="Rating:"
           className="flex"
           value={movieEmotion}
