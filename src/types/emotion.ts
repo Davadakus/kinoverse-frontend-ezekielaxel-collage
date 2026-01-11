@@ -6,12 +6,12 @@ export type Emotion =
   | "scary"
   | "motivational";
 
+export type MovieEmotionsRecord = Record<number, MovieEmotionData>;
+
 export interface MovieEmotionData {
   emotionCounts: Record<Emotion, number>;
   userEmotion?: Emotion[];
 }
-
-export type MovieEmotionsRecord = Record<number, MovieEmotionData>;
 
 export interface EmotionOption {
   value: Emotion;

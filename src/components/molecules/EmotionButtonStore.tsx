@@ -1,20 +1,26 @@
 import { Typography } from "@mui/material";
-import type {
-  Emotion,
-  EmotionalButtonType,
-  MovieEmotionData,
-} from "../../types/emotion";
+import type { Emotion, MovieEmotionData } from "../../types/emotion";
 import EmotionalRatingBtn from "../atoms/EmotionalRatingBtn";
 import EmotionalFilterBtn from "../atoms/EmotionalFilterBtn";
 import { EMOTION_OPTIONS } from "../../types/emotion";
 
-interface EmotionalButtonStoreProps {
+interface BaseProps {
   className?: string;
   label: string;
-  value?: MovieEmotionData;
   onChange?: (userEmotion: Emotion[]) => void;
-  type: EmotionalButtonType;
 }
+
+interface RatingProps extends BaseProps {
+  type: "rating";
+  value?: MovieEmotionData;
+}
+
+interface FilterProps extends BaseProps {
+  type: "filter";
+  value?: Emotion[];
+}
+
+type EmotionalButtonStoreProps = RatingProps | FilterProps;
 
 export default function EmotionalButtonStore({
   className,
@@ -40,7 +46,11 @@ export default function EmotionalButtonStore({
             onChange={onChange}
           />
         ) : (
-          <EmotionalFilterBtn emotionOptions={EMOTION_OPTIONS} />
+          <EmotionalFilterBtn
+            value={value}
+            emotionOptions={EMOTION_OPTIONS}
+            onChange={onChange}
+          />
         )}
       </div>
     </div>

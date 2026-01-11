@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 import type { Movie } from "../../types/movie";
 import EmotionButtonStore from "../molecules/EmotionButtonStore";
-import { useMovieEmotions } from "../../hook/useEmotionScore";
+import { useMovieEmotions } from "../../hook/useMovieEmotion";
 
 interface DisplayMovieMainProps {
   movie: Movie;

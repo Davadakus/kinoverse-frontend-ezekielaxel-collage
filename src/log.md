@@ -52,3 +52,28 @@
 - Successfully implemented the function rate a movie and also show the counter
 - Need to seperate the filter function and the rate function, right now it uses the exact same component
 - The component itself has the same UI but a different functionality, so not sure how to divide the component
+- 45 + 45 + 20
+
+# Day 8 - 10/01/26
+
+- Currently working on the filter function to update the movies when the user clicks on the toggle
+- Ive separated the types of button for rating and filtering movies, a bit confusing at first but i think its pretty modular
+- I think how itll work is that it gets the selected Emotion[] and similar to how rating works, instead of getting the whole record of movie emotions and updating the count of an emotion for a particular movie, it returns movieId of the highest rated emotion and only movies with those emotion ratings.
+- Not sure how to handle multiple emotion filters on Ex. Happy and Cozy selected; will it select the highest happy and cozy movie? What happens in certain cases
+
+- Case 1: More happy
+- Happy: 12
+- Cozy: 5
+
+- Case 2: More Cozy + 1
+- Happy: 5
+- Cozy: 13
+
+- Maybe `sum up` the emotion and whichever highest gets the priority
+- So when getting the emotions that were filtered, sum it all up and display highest to lowest
+
+# Day 9 - 11/01/26
+
+- Implemented filter function to a certain degree
+- Havent implemented way to filter it based on most "happy" movie
+- Lots of modularization

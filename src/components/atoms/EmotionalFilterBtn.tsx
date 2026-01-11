@@ -6,24 +6,25 @@ import type { EmotionOption } from "../../types/emotion";
 
 interface EmotionalFilterBtnProps {
   emotionOptions: EmotionOption[];
-  value?: MovieEmotionData;
-  onChange?: () => void;
+  value?: Emotion[];
+  onChange?: (userEmotion: Emotion[]) => void;
 }
 
 export default function EmotionalFilterBtn({
+  value,
   emotionOptions,
+  onChange,
 }: EmotionalFilterBtnProps) {
-  const [emotions, setEmotions] = React.useState<Emotion[]>([]);
-
   const handleChange = (
     _event: React.MouseEvent<HTMLElement>,
     newEmotions: Emotion[],
   ) => {
-    setEmotions(newEmotions);
+    onChange?.(newEmotions);
   };
+
   return (
     <ToggleButtonGroup
-      value={emotions}
+      value={value}
       onChange={handleChange}
       aria-label="Emotion Filter"
       sx={{ bgcolor: "surface.foreground", margin: 0.5 }}
