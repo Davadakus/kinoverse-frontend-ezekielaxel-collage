@@ -43,7 +43,7 @@
 - Like a database for the system ig thats stored on the frontend?
 - Each user has unique one
 
-# Day 7 - 09/01/26
+# Day 8 - 09/01/26
 
 - Localstorage seems like a global variable that is basically functions as a dictionary
 - you can `setItem({key})` and then call it using `getItem({key})`
@@ -54,7 +54,7 @@
 - The component itself has the same UI but a different functionality, so not sure how to divide the component
 - 45 + 45 + 20
 
-# Day 8 - 10/01/26
+# Day 9 - 10/01/26
 
 - Currently working on the filter function to update the movies when the user clicks on the toggle
 - Ive separated the types of button for rating and filtering movies, a bit confusing at first but i think its pretty modular
@@ -72,8 +72,13 @@
 - Maybe `sum up` the emotion and whichever highest gets the priority
 - So when getting the emotions that were filtered, sum it all up and display highest to lowest
 
-# Day 9 - 11/01/26
+# Day 10 - 11/01/26
 
 - Implemented filter function to a certain degree
 - Havent implemented way to filter it based on most "happy" movie
 - Lots of modularization
+
+# Day 11 - 12/01/26
+
+- Top 3 implemented but not stylized
+- will need to figure out how to make the tailwind bg class sycned to the one in the thing

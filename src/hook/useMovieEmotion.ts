@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import type { MovieEmotionsRecord, Emotion } from "../types/emotion.ts";
 
-const STORAGE_KEY = "movieRecord";
+const storageKey = import.meta.env.STORAGE_KEY;
 
 function getInitialRecord(): MovieEmotionsRecord {
-  const raw = localStorage.getItem(STORAGE_KEY);
+  const raw = localStorage.getItem(storageKey);
   if (!raw) return {};
 
   try {
@@ -20,7 +20,7 @@ export function useMovieEmotions(movieId: number) {
   const movieData = record[movieId];
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(record));
+    localStorage.setItem(storageKey, JSON.stringify(record));
   }, [record]);
 
   function setMovieEmotion(userEmotion: Emotion[]) {

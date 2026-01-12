@@ -1,10 +1,10 @@
 import { useState, useMemo } from "react";
 import type { MovieEmotionsRecord, Emotion } from "../types/emotion.ts";
 
-const STORAGE_KEY = "movieRecord";
+const storageKey = import.meta.env.STORAGE_KEY;
 
 function getInitialRecord(): MovieEmotionsRecord {
-  const raw = localStorage.getItem(STORAGE_KEY);
+  const raw = localStorage.getItem(storageKey);
   if (!raw) return {};
 
   try {
