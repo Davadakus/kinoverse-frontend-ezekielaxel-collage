@@ -5,6 +5,7 @@ import EmotionButtonStore from "../components/molecules/EmotionButtonStore";
 import { useState } from "react";
 import type { Emotion } from "../types/emotion";
 import { useMovieFilter } from "../hook/useMovieFilter";
+import { Box, CircularProgress } from "@mui/material";
 
 export default function MainScreen() {
   const { movies, loading } = useMovies();
@@ -25,7 +26,9 @@ export default function MainScreen() {
       />
       <div className="mx-30">
         {loading ? (
-          <div>Loading...</div>
+          <div className="flex flex-1 items-center justify-center">
+            <CircularProgress color="inherit" size={80} />
+          </div>
         ) : filteredMovieIds === null ? (
           <div className="grid grid-flow-row grid-cols-4 gap-20">
             {movies.map((movie) => (

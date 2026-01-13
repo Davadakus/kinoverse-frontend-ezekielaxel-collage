@@ -1,6 +1,15 @@
-import { Card, CardMedia, CardContent, Typography } from "@mui/material";
+import {
+  Card,
+  CardMedia,
+  CardContent,
+  Typography,
+  Box,
+  Skeleton,
+} from "@mui/material";
 import type { Movie } from "../../types/movie";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import MovieImage from "../molecules/MovieImage";
 
 interface MovieCardProps {
   movie: Movie;
@@ -26,12 +35,7 @@ export default function MovieCard({ movie }: MovieCardProps) {
         to={`/movie/${movie.id}`}
         className="brightness-100 duration-300 hover:brightness-125"
       >
-        <CardMedia
-          component="img"
-          height="140"
-          src={`https://media.themoviedb.org/t/p/original/${movie.poster_path}`}
-          alt="movie poster"
-        />
+        <MovieImage movie={movie} />
         <CardContent>
           <Typography variant="h5" component="div" fontWeight="bold">
             {movie.title}

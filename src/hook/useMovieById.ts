@@ -7,6 +7,9 @@ export function useMovieById(id: number) {
   const [loadingMovieBId, setLoadingMovieBId] = useState(true);
 
   useEffect(() => {
+    setMovie(null);
+    setLoadingMovieBId(true);
+
     getMovieById(id)
       .then(setMovie)
       .finally(() => setLoadingMovieBId(false));

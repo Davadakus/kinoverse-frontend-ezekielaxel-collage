@@ -82,3 +82,10 @@
 
 - Top 3 implemented but not stylized
 - will need to figure out how to make the tailwind bg class sycned to the one in the thing
+
+# Day 12 - 13/01/26
+
+- Loading States implemented
+- Improvement for var names maybe
+- Top emotion not stylized yet
+- Could improve loading for MovieDisplayPage

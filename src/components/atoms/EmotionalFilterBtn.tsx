@@ -1,6 +1,6 @@
 import { ToggleButtonGroup, ToggleButton } from "@mui/material";
 import Emoji from "./Emoji";
-import type { Emotion, MovieEmotionData } from "../../types/emotion";
+import type { Emotion } from "../../types/emotion";
 import React from "react";
 import type { EmotionOption } from "../../types/emotion";
 

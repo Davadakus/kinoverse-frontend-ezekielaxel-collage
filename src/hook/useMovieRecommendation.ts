@@ -7,6 +7,9 @@ export function useMovieRecommendations(id: number) {
   const [loadingMovieRec, setLoadingMovieRec] = useState(true);
 
   useEffect(() => {
+    setMovieRec([]);
+    setLoadingMovieRec(true);
+
     getMovieRecommendation(id)
       .then(setMovieRec)
       .finally(() => setLoadingMovieRec(false));
