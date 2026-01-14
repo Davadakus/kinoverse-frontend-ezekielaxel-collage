@@ -43,6 +43,7 @@ export default function EmotionalRatingBtn({
         >
           <Emoji>
             {item.emoji} ({value?.emotionCounts[item.value as Emotion] ?? 0})
+            {/* {item.emoji} */}
           </Emoji>
           <div> </div>
         </ToggleButton>

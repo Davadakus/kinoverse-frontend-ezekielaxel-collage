@@ -1,7 +1,7 @@
 import { Card, CardContent, Typography } from "@mui/material";
 import type { Movie } from "../../types/movie";
 import { Link } from "react-router-dom";
-import MovieImage from "../molecules/MovieImage";
+import MovieImage from "../atoms/MovieImage";
 
 interface MovieSuggestionProps {
   movie: Movie;
@@ -28,12 +28,6 @@ export default function MovieSuggestion({ movie }: MovieSuggestionProps) {
         className="brightness-100 duration-300 hover:brightness-125"
       >
         <MovieImage movie={movie} />
-        {/* <CardMedia
-          component="img"
-          src={`https://media.themoviedb.org/t/p/original/${movie.poster_path}`}
-          alt="movie suggestion"
-          sx={{ maxHeight: 240 }}
-        /> */}
         <CardContent>
           <Typography
             variant="subtitle1"

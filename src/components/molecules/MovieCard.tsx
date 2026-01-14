@@ -1,15 +1,8 @@
-import {
-  Card,
-  CardMedia,
-  CardContent,
-  Typography,
-  Box,
-  Skeleton,
-} from "@mui/material";
+import { Card, CardContent, Typography } from "@mui/material";
 import type { Movie } from "../../types/movie";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import MovieImage from "../molecules/MovieImage";
+
+import MovieImage from "../atoms/MovieImage";
 
 interface MovieCardProps {
   movie: Movie;

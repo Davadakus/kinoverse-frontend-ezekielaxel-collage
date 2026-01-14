@@ -6,7 +6,7 @@ import { EMOTION_OPTIONS } from "../../types/emotion";
 
 interface BaseProps {
   className?: string;
-  label: string;
+  title: string;
   onChange?: (userEmotion: Emotion[]) => void;
 }
 
@@ -24,7 +24,7 @@ type EmotionalButtonStoreProps = RatingProps | FilterProps;
 
 export default function EmotionalButtonStore({
   className,
-  label,
+  title,
   value,
   type,
   onChange,
@@ -37,7 +37,7 @@ export default function EmotionalButtonStore({
           component="div"
           sx={{ marginBlock: "auto" }}
         >
-          {label}
+          {title}
         </Typography>
         {type === "rating" ? (
           <EmotionalRatingBtn
