@@ -78,14 +78,19 @@
 - Havent implemented way to filter it based on most "happy" movie
 - Lots of modularization
 
-# Day 11 - 12/01/26
+# Day 12 - 12/01/26
 
 - Top 3 implemented but not stylized
 - will need to figure out how to make the tailwind bg class sycned to the one in the thing
 
-# Day 12 - 13/01/26
+# Day 13 - 13/01/26
 
 - Loading States implemented
 - Improvement for var names maybe
 - Top emotion not stylized yet
 - Could improve loading for MovieDisplayPage
+
+# Day 14 - 18/01/26
+
+- Bug fix for main display filter, it was only showing movies that were rated from the mainmenu and not movies that were also recommended
+- Some parallax/spring animation added on elements
