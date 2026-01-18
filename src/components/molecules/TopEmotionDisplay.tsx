@@ -8,11 +8,21 @@ interface TopEmotionDisplayProps {
 }
 
 export default function TopEmotionDisplay({ value }: TopEmotionDisplayProps) {
-  if (!value || value.length === 0) return null;
+  if (!value || value.length === 0)
+    return (
+      <div className="m-2 flex flex-col items-center gap-1 rounded-xl bg-[#282828] p-2">
+        <Typography variant="body1" fontWeight="bold">
+          Top Emotion:
+        </Typography>
+        <Typography variant="body1">No Emotions yet... </Typography>
+      </div>
+    );
 
   return (
     <div className="m-2 flex flex-col items-center rounded-xl bg-[#282828] p-2">
-      <Typography variant="body1">Top Emotion: </Typography>
+      <Typography variant="body1" fontWeight="bold">
+        Top Emotion:{" "}
+      </Typography>
       <div className="flex flex-row gap-3">
         {value.map(([emotion, count]) => {
           const emojiItem = EMOTION_OPTIONS.find(

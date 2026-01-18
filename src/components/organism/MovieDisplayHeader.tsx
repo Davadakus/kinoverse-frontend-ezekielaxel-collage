@@ -15,34 +15,37 @@ export default function MovieDisplayHeader({ movie }: MovieDisplayHeaderProps) {
   const { sortedEmotion } = useTopEmotionCount(movieEmotion);
 
   return (
-    <div className="flex p-5">
-      <div>
-        <div className="w-70">
+    <div className="flex flex-col p-5">
+      <div className="flex flex-row">
+        <div className="w-100">
           <MovieImage movie={movie} />
         </div>
 
-        <TopEmotionDisplay value={sortedEmotion} />
-      </div>
-
-      <div className="m-5 flex flex-col justify-between">
-        <div className="flex flex-col">
-          <Typography
-            gutterBottom
-            variant="h4"
-            component="div"
-            fontWeight="bold"
-          >
-            {movie.title} ({movie.release_date.slice(0, 4)})
-          </Typography>
-          <Typography variant="body1">{movie.overview}</Typography>
+        <div className="m-5 flex flex-col justify-between">
+          <div className="flex flex-col">
+            <Typography
+              gutterBottom
+              variant="h4"
+              component="div"
+              fontWeight="bold"
+            >
+              {movie.title} ({movie.release_date.slice(0, 4)})
+            </Typography>
+            <Typography variant="body1" sx={{ maxWidth: 900, marginRight: 5 }}>
+              {movie.overview}
+            </Typography>
+          </div>
+          <EmotionButtonStore
+            type="rating"
+            title="Rating:"
+            className="flex"
+            value={movieEmotion}
+            onChange={setMovieEmotion}
+          />
         </div>
-        <EmotionButtonStore
-          type="rating"
-          title="Rating:"
-          className="flex"
-          value={movieEmotion}
-          onChange={setMovieEmotion}
-        />
+      </div>
+      <div className="w-100">
+        <TopEmotionDisplay value={sortedEmotion} />
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import type { MovieEmotionsRecord, Emotion } from "../types/emotion.ts";
 
-const storageKey = import.meta.env.STORAGE_KEY;
+const storageKey = import.meta.env.VITE_STORAGE_KEY;
 
 function getInitialRecord(): MovieEmotionsRecord {
   const raw = localStorage.getItem(storageKey);
@@ -45,6 +45,7 @@ export function useMovieEmotions(movieId: number) {
 
       for (const e of added) {
         newCounts[e] += 1;
+        console.log(storageKey);
         console.log(e + " Added");
       }
 

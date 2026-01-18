@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import type { MovieEmotionsRecord, Emotion } from "../types/emotion.ts";
 
-const storageKey = import.meta.env.STORAGE_KEY;
+const storageKey = import.meta.env.VITE_STORAGE_KEY;
 
 function getInitialRecord(): MovieEmotionsRecord {
   const raw = localStorage.getItem(storageKey);

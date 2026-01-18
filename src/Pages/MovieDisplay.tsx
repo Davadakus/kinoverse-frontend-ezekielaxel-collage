@@ -4,6 +4,7 @@ import { CircularProgress } from "@mui/material";
 import MovieDisplayHeader from "../components/organism/MovieDisplayHeader";
 import MovieRecommendation from "../components/organism/MovieRecommendation";
 import Title from "../components/atoms/Title";
+import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 
 export default function MovieDisplay() {
   const { id } = useParams<{ id: string }>();
@@ -11,17 +12,23 @@ export default function MovieDisplay() {
 
   return (
     <div className="mx-3 flex flex-col">
-      <Title title="Movie Display" />
-      {loadingMovieBId ? (
-        <div className="my-20 flex flex-1 items-center justify-center">
-          <CircularProgress color="inherit" size={80} />
-        </div>
-      ) : movie === null ? (
-        <div> movieNotFound</div>
-      ) : (
-        <MovieDisplayHeader movie={movie} />
-      )}
-      <MovieRecommendation id={id!} />
+      <Parallax pages={2} key={id}>
+        <ParallaxLayer offset={0} speed={0.5} factor={1}>
+          <Title title="Movie Display" />
+          {loadingMovieBId ? (
+            <div className="my-20 flex flex-1 items-center justify-center">
+              <CircularProgress color="inherit" size={80} />
+            </div>
+          ) : movie === null ? (
+            <div> movieNotFound</div>
+          ) : (
+            <MovieDisplayHeader movie={movie} />
+          )}
+        </ParallaxLayer>
+        <ParallaxLayer offset={0.8} speed={1}>
+          <MovieRecommendation id={id!} />
+        </ParallaxLayer>
+      </Parallax>
     </div>
   );
 }
