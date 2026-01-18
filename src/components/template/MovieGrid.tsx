@@ -3,6 +3,7 @@ import { useMovies } from "../../hook/useMovies";
 import MovieCard from "../molecules/MovieCard";
 import { useMovieFilter } from "../../hook/useMovieFilter";
 import type { Emotion } from "../../types/emotion";
+import { useMoviesByIds } from "../../hook/useMovieByIds";
 
 interface MovieGridProps {
   selectedEmotions: Emotion[];
@@ -11,6 +12,7 @@ interface MovieGridProps {
 export default function MovieGrid({ selectedEmotions }: MovieGridProps) {
   const { movies, loading } = useMovies();
   const filteredMovieIds = useMovieFilter(selectedEmotions);
+  const { filteredMovies, filteredLoading } = useMoviesByIds(filteredMovieIds);
 
   return (
     <div className="mx-30">
@@ -26,7 +28,7 @@ export default function MovieGrid({ selectedEmotions }: MovieGridProps) {
         </div>
       ) : (
         <div className="grid grid-flow-row grid-cols-4 gap-20">
-          {movies
+          {filteredMovies
             .filter((movie) => filteredMovieIds.includes(movie.id))
             .map((movie) => (
               <MovieCard key={movie.id} movie={movie} />

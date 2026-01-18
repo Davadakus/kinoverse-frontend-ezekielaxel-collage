@@ -42,6 +42,10 @@ export async function getMovieById(id: number): Promise<Movie> {
   return data;
 }
 
+export async function getMoviesByIds(ids: number[]): Promise<Movie[]> {
+  return Promise.all(ids.map((id) => getMovieById(id)));
+}
+
 export async function getMovieRecommendation(id: number): Promise<Movie[]> {
   const response = await fetch(
     `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${apiKey}`,
