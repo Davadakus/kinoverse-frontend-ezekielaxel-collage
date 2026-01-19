@@ -1,4 +1,4 @@
-import { CircularProgress } from "@mui/material";
+import { CircularProgress, Typography } from "@mui/material";
 import { useMovies } from "../../hook/useMovies";
 import MovieCard from "../molecules/MovieCard";
 import { useMovieFilter } from "../../hook/useMovieFilter";
@@ -20,13 +20,20 @@ export default function MovieGrid({ selectedEmotions }: MovieGridProps) {
         <div className="flex flex-1 items-center justify-center">
           <CircularProgress color="inherit" size={80} />
         </div>
-      ) : filteredMovieIds === null ? (
+      ) : // Default State
+      filteredMovieIds === null ? (
         <div className="grid grid-flow-row grid-cols-4 gap-20">
           {movies.map((movie) => (
             <MovieCard key={movie.id} movie={movie} />
           ))}
         </div>
+      ) : // No Movies in filter
+      filteredMovies.length == 0 ? (
+        <Typography variant="h5" component="div" fontWeight="bold">
+          No Movies Found...
+        </Typography>
       ) : (
+        // Movies in filter
         <div className="grid grid-flow-row grid-cols-4 gap-20">
           {filteredMovies
             .filter((movie) => filteredMovieIds.includes(movie.id))

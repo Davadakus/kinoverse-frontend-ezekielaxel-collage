@@ -13,6 +13,8 @@ export default function MainScreen() {
       <Parallax pages={3}>
         <ParallaxLayer offset={0} speed={0.1}>
           <Title title="Kinoverse" />
+        </ParallaxLayer>
+        <ParallaxLayer offset={0.15} speed={0.2}>
           <EmotionButtonStore
             type="filter"
             title="Filter:"
