@@ -5,6 +5,7 @@ import MovieDisplayHeader from "../components/organism/MovieDisplayHeader";
 import MovieRecommendation from "../components/organism/MovieRecommendation";
 import Title from "../components/atoms/Title";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
+import AnimatedBackground from "../components/atoms/AnimatedBackground";
 
 export default function MovieDisplay() {
   const { id } = useParams<{ id: string }>();
@@ -12,7 +13,8 @@ export default function MovieDisplay() {
 
   return (
     <div className="mx-3 flex flex-col">
-      <Parallax pages={2} key={id}>
+      <AnimatedBackground />
+      <Parallax pages={2} key={id} style={{ overflowX: "hidden" }}>
         <ParallaxLayer offset={0} speed={0.5} factor={1}>
           <Title title="Movie Display" />
           {loadingMovieBId ? (

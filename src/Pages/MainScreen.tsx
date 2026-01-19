@@ -4,12 +4,14 @@ import { useState } from "react";
 import type { Emotion } from "../types/emotion";
 import MovieGrid from "../components/template/MovieGrid";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
+import AnimatedBackground from "../components/atoms/AnimatedBackground";
 
 export default function MainScreen() {
   const [selectedEmotions, setSelectedEmotions] = useState<Emotion[]>([]);
 
   return (
     <div className="flex h-screen flex-col">
+      <AnimatedBackground />
       <Parallax pages={3}>
         <ParallaxLayer offset={0} speed={0.1}>
           <Title title="Kinoverse" />
