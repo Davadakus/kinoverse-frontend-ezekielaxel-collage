@@ -20,7 +20,5 @@ export function useMoviesByIds(ids: number[] | null) {
       .finally(() => setLoading(false));
   }, [ids?.join(",")]);
 
-  console.log("Filtered");
-  console.log(filteredMovies);
   return { filteredMovies, filteredLoading };
 }
