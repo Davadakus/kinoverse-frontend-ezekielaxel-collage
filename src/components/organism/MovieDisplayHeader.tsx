@@ -18,7 +18,7 @@ export default function MovieDisplayHeader({ movie }: MovieDisplayHeaderProps) {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col bg-neutral-800/40 p-2">
+    <div className="flex flex-col bg-neutral-800/40 p-2 px-6">
       <div className="flex flex-row">
         <div className="w-40 xl:w-60 2xl:w-80">
           <Button
@@ -26,7 +26,6 @@ export default function MovieDisplayHeader({ movie }: MovieDisplayHeaderProps) {
             color="inherit"
             sx={{
               marginBottom: 1,
-              paddingX: 2,
               "&:hover": {
                 bgcolor: "surface.hover",
               },
