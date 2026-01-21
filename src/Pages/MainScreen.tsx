@@ -16,9 +16,9 @@ export default function MainScreen() {
       <Parallax pages={3}>
         <ParallaxLayer offset={0} speed={0.1}>
           <Title title="KinoVerse" />
-          <MovingText title="KinoVerse" />
+          <MovingText className="mb-10" title="KinoVerse" />
         </ParallaxLayer>
-        <ParallaxLayer offset={0.18} speed={0.2}>
+        <ParallaxLayer offset={0.2} speed={0.2}>
           <EmotionButtonStore
             type="filter"
             title="Filter:"
@@ -27,7 +27,7 @@ export default function MainScreen() {
             onChange={setSelectedEmotions}
           />
         </ParallaxLayer>
-        <ParallaxLayer offset={0.3} speed={0.4}>
+        <ParallaxLayer offset={0.4} speed={0.4}>
           <MovieGrid selectedEmotions={selectedEmotions} />
           <MovingText className="mt-10" title="KinoVerse" />
         </ParallaxLayer>
