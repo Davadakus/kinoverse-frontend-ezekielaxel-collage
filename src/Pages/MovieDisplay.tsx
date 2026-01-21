@@ -12,7 +12,7 @@ export default function MovieDisplay() {
   const { movie, loadingMovieBId } = useMovieById(Number(id!));
 
   return (
-    <div className="mx-3 flex flex-col">
+    <div className="flex flex-col">
       <AnimatedBackground />
       <Parallax pages={2} key={id} style={{ overflowX: "hidden" }}>
         <ParallaxLayer offset={0} speed={0.5} factor={1}>

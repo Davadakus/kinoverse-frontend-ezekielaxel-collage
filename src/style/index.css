@@ -23,6 +23,15 @@
     }
 }
 
+@keyframes marquee {
+  from {
+    transform: translateX(-10%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
 @layer components{
     .background {
         position: fixed;

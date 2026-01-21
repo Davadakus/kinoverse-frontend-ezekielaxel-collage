@@ -5,6 +5,7 @@ import type { Emotion } from "../types/emotion";
 import MovieGrid from "../components/template/MovieGrid";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import AnimatedBackground from "../components/atoms/AnimatedBackground";
+import MovingText from "../components/atoms/MovingText";
 
 export default function MainScreen() {
   const [selectedEmotions, setSelectedEmotions] = useState<Emotion[]>([]);
@@ -14,9 +15,10 @@ export default function MainScreen() {
       <AnimatedBackground />
       <Parallax pages={3}>
         <ParallaxLayer offset={0} speed={0.1}>
-          <Title title="Kinoverse" />
+          <Title title="KinoVerse" />
+          <MovingText title="KinoVerse" />
         </ParallaxLayer>
-        <ParallaxLayer offset={0.15} speed={0.2}>
+        <ParallaxLayer offset={0.18} speed={0.2}>
           <EmotionButtonStore
             type="filter"
             title="Filter:"
@@ -27,6 +29,7 @@ export default function MainScreen() {
         </ParallaxLayer>
         <ParallaxLayer offset={0.3} speed={0.4}>
           <MovieGrid selectedEmotions={selectedEmotions} />
+          <MovingText className="mt-10" title="KinoVerse" />
         </ParallaxLayer>
       </Parallax>
     </div>

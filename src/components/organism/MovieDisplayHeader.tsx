@@ -1,10 +1,12 @@
-import { Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import type { Movie } from "../../types/movie";
 import EmotionButtonStore from "../molecules/EmotionButtonStore";
 import { useMovieEmotions } from "../../hook/useMovieEmotion";
 import { useTopEmotionCount } from "../../hook/useTopEmotionCount";
 import TopEmotionDisplay from "../molecules/TopEmotionDisplay";
 import MovieImage from "../atoms/MovieImage";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import { useNavigate } from "react-router-dom";
 
 interface MovieDisplayHeaderProps {
   movie: Movie;
@@ -13,11 +15,26 @@ interface MovieDisplayHeaderProps {
 export default function MovieDisplayHeader({ movie }: MovieDisplayHeaderProps) {
   const { movieEmotion, setMovieEmotion } = useMovieEmotions(movie.id);
   const { sortedEmotion } = useTopEmotionCount(movieEmotion);
+  const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col p-5">
+    <div className="flex flex-col bg-neutral-800/40 p-2">
       <div className="flex flex-row">
         <div className="w-100">
+          <Button
+            startIcon={<ArrowBackIosNewIcon />}
+            color="inherit"
+            sx={{
+              marginBottom: 1,
+              paddingX: 2,
+              "&:hover": {
+                bgcolor: "surface.hover",
+              },
+            }}
+            onClick={() => navigate(-1)}
+          >
+            Back
+          </Button>
           <MovieImage movie={movie} />
         </div>
 

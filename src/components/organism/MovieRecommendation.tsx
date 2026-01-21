@@ -9,7 +9,7 @@ export default function MovieRecommendation({ id }: MovieRecommendationProps) {
   const { movieRec, loadingMovieRec } = useMovieRecommendations(Number(id));
 
   return (
-    <div className="flex flex-col rounded-xl bg-neutral-800 p-4">
+    <div className="flex flex-col rounded-xl bg-neutral-800/90 p-4">
       <Typography gutterBottom variant="h5" component="div" fontWeight="bold">
         Similar Movies
       </Typography>

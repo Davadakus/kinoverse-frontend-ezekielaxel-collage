@@ -6,8 +6,14 @@ interface MainScreenHeaderProps {
 
 export default function MainScreenHeader({ title }: MainScreenHeaderProps) {
   return (
-    <div className="mx-10 mt-10 border-2 border-stone-600 p-3 text-center text-6xl">
-      <Typography variant="h2" component="div">
+    <div className="mb-4 bg-linear-to-t from-(--bg-default) to-stone-800 pt-10 pb-5 text-center text-6xl">
+      <Typography
+        variant="h2"
+        component="div"
+        sx={{
+          fontFamily: "'Audiowide', sans-serif",
+        }}
+      >
         {title}
       </Typography>
     </div>
