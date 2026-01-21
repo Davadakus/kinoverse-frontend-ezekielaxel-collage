@@ -20,7 +20,7 @@ export default function MovieDisplayHeader({ movie }: MovieDisplayHeaderProps) {
   return (
     <div className="flex flex-col bg-neutral-800/40 p-2">
       <div className="flex flex-row">
-        <div className="w-100">
+        <div className="w-40 xl:w-60 2xl:w-80">
           <Button
             startIcon={<ArrowBackIosNewIcon />}
             color="inherit"
@@ -61,7 +61,7 @@ export default function MovieDisplayHeader({ movie }: MovieDisplayHeaderProps) {
           />
         </div>
       </div>
-      <div className="w-100">
+      <div className="w-40 xl:w-60 2xl:w-80">
         <TopEmotionDisplay value={sortedEmotion} />
       </div>
     </div>
