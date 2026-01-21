@@ -13,7 +13,7 @@ export default function MainScreen() {
   return (
     <div className="flex h-screen flex-col">
       <AnimatedBackground />
-      <Parallax pages={3}>
+      <Parallax pages={3.3}>
         <ParallaxLayer offset={0} speed={0.1}>
           <Title title="KinoVerse" />
           <MovingText className="mb-10" title="KinoVerse" />
