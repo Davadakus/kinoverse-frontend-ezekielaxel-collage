@@ -4,20 +4,20 @@ import type { Movie } from "../types/movie";
 
 export function useMoviesByIds(ids: number[] | null) {
   const [filteredMovies, setFilteredMovies] = useState<Movie[]>([]);
-  const [filteredLoading, setLoading] = useState(false);
+  const [filteredLoading, setFilteredLoading] = useState(false);
 
   useEffect(() => {
     if (!ids || ids.length === 0) {
       setFilteredMovies([]);
-      setLoading(false);
+      setFilteredLoading(false);
       return;
     }
 
-    setLoading(true);
+    setFilteredLoading(true);
 
     getMoviesByIds(ids)
       .then(setFilteredMovies)
-      .finally(() => setLoading(false));
+      .finally(() => setFilteredLoading(false));
   }, [ids?.join(",")]);
 
   return { filteredMovies, filteredLoading };

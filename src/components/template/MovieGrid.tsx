@@ -11,6 +11,8 @@ interface MovieGridProps {
 
 export default function MovieGrid({ selectedEmotions }: MovieGridProps) {
   const { movies, loading } = useMovies();
+
+  // Need to reconsider usage of these 2 hooks later
   const filteredMovieIds = useMovieFilter(selectedEmotions);
   const { filteredMovies, filteredLoading } = useMoviesByIds(filteredMovieIds);
 
@@ -28,18 +30,16 @@ export default function MovieGrid({ selectedEmotions }: MovieGridProps) {
           ))}
         </div>
       ) : // No Movies in filter
-      filteredMovies.length == 0 ? (
+      filteredMovies.length === 0 ? (
         <Typography variant="h5" component="div" fontWeight="bold">
           No Movies Found...
         </Typography>
       ) : (
         // Movies in filter
         <div className="grid grid-flow-row grid-cols-4 gap-20">
-          {filteredMovies
-            .filter((movie) => filteredMovieIds.includes(movie.id))
-            .map((movie) => (
-              <MovieCard key={movie.id} movie={movie} />
-            ))}
+          {filteredMovies.map((movie) => (
+            <MovieCard key={movie.id} movie={movie} />
+          ))}
         </div>
       )}
     </div>

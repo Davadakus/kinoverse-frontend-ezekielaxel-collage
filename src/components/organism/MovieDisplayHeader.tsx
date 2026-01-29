@@ -7,10 +7,13 @@ import TopEmotionDisplay from "../molecules/TopEmotionDisplay";
 import MovieImage from "../atoms/MovieImage";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { useNavigate } from "react-router-dom";
+import { formatYear } from "../../utils/releaseYear";
 
 interface MovieDisplayHeaderProps {
   movie: Movie;
 }
+
+// Move to seperate file if used more than once
 
 export default function MovieDisplayHeader({ movie }: MovieDisplayHeaderProps) {
   const { movieEmotion, setMovieEmotion } = useMovieEmotions(movie.id);
@@ -45,7 +48,7 @@ export default function MovieDisplayHeader({ movie }: MovieDisplayHeaderProps) {
               component="div"
               fontWeight="bold"
             >
-              {movie.title} ({movie.release_date.slice(0, 4)})
+              {movie.title} {formatYear(movie.release_date)}
             </Typography>
             <Typography variant="body1" sx={{ maxWidth: 900, marginRight: 5 }}>
               {movie.overview}
