@@ -94,3 +94,11 @@
 
 - Bug fix for main display filter, it was only showing movies that were rated from the mainmenu and not movies that were also recommended
 - Some parallax/spring animation added on elements
+
+# Day 15-16 - 31/01/26
+
+- Just fixing some changes requested from PR
+- Added error states on everything but havent handled them
+- Make sure the util function for date is being used is all places
+- util function for loading and saving locastorage data
+- Reconsider usage of the hook

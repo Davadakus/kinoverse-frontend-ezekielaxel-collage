@@ -1,21 +1,9 @@
 import { useState, useMemo } from "react";
 import type { MovieEmotionsRecord, Emotion } from "../types/emotion.ts";
-
-const storageKey = import.meta.env.VITE_STORAGE_KEY;
-
-function getInitialRecord(): MovieEmotionsRecord {
-  const raw = localStorage.getItem(storageKey);
-  if (!raw) return {};
-
-  try {
-    return JSON.parse(raw);
-  } catch {
-    return {};
-  }
-}
+import { loadLocalStorage } from "../utils/localStorage.ts";
 
 export function useMovieFilter(selectedEmotions: Emotion[]) {
-  const [emotionRecord] = useState<MovieEmotionsRecord>(getInitialRecord);
+  const [emotionRecord] = useState<MovieEmotionsRecord>(loadLocalStorage);
 
   const filteredIds = useMemo(() => {
     if (!selectedEmotions.length) {

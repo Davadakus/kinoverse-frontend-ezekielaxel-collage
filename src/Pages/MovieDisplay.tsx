@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { useMovieById } from "../hook/useMovieById";
 import { CircularProgress } from "@mui/material";
 import MovieDisplayHeader from "../components/organism/MovieDisplayHeader";
@@ -9,7 +9,12 @@ import AnimatedBackground from "../components/atoms/AnimatedBackground";
 
 export default function MovieDisplay() {
   const { id } = useParams<{ id: string }>();
-  const { movie, loadingMovieBId } = useMovieById(Number(id!));
+
+  if (!id) {
+    return <Navigate to="/" replace />; // or show an error message
+  }
+
+  const { movie, loadingMovieBId } = useMovieById(Number(id));
 
   return (
     <div className="flex flex-col">
@@ -22,6 +27,7 @@ export default function MovieDisplay() {
               <CircularProgress color="inherit" size={80} />
             </div>
           ) : movie === null ? (
+            // Please fix this
             <div> movieNotFound</div>
           ) : (
             <MovieDisplayHeader movie={movie} />

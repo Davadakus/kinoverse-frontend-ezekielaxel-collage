@@ -8,7 +8,8 @@ export function loadLocalStorage(): MovieEmotionsRecord {
 
   try {
     return JSON.parse(raw);
-  } catch {
+  } catch (error) {
+    console.error("Failed to parse emotion data from localStorage:", error);
     return {};
   }
 }

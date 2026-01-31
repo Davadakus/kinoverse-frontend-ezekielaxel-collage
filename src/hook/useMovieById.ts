@@ -5,6 +5,7 @@ import type { Movie } from "../types/movie";
 export function useMovieById(id: number) {
   const [movie, setMovie] = useState<Movie | null>(null);
   const [loadingMovieBId, setLoadingMovieBId] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
     setMovie(null);
@@ -12,8 +13,9 @@ export function useMovieById(id: number) {
 
     getMovieById(id)
       .then(setMovie)
+      .catch(setError)
       .finally(() => setLoadingMovieBId(false));
   }, [id]);
 
-  return { movie, loadingMovieBId };
+  return { movie, loadingMovieBId, error };
 }
