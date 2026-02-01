@@ -11,7 +11,7 @@ export function useMovieFilter(selectedEmotions: Emotion[]) {
     }
 
     return Object.entries(emotionRecord)
-      .filter(([_, movieEmotionData]) =>
+      .filter(([_movieId, movieEmotionData]) =>
         selectedEmotions.some(
           (emotion) => (movieEmotionData.emotionCounts[emotion] ?? 0) > 0,
         ),

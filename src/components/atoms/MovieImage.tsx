@@ -1,12 +1,14 @@
 import { Box, Skeleton, CardMedia } from "@mui/material";
 import { useState } from "react";
 import type { Movie } from "../../types/movie";
+import { getImage } from "../../utils/movieImage";
 
 interface MovieImageProps {
   movie: Movie;
+  size?: "w200" | "w500" | "original";
 }
 
-export default function MovieImage({ movie }: MovieImageProps) {
+export default function MovieImage({ movie, size = "w500" }: MovieImageProps) {
   const [loaded, setLoaded] = useState(false);
 
   return (
@@ -29,7 +31,7 @@ export default function MovieImage({ movie }: MovieImageProps) {
 
       <CardMedia
         component="img"
-        src={`https://media.themoviedb.org/t/p/original/${movie.poster_path}`}
+        src={getImage(movie.poster_path, size)}
         alt="movie poster"
         loading="lazy"
         onLoad={() => setLoaded(true)}

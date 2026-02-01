@@ -102,3 +102,9 @@
 - Make sure the util function for date is being used is all places
 - util function for loading and saving locastorage data
 - Reconsider usage of the hook
+
+# Day 17 - 1/02/26
+
+- Error handling for going to non existent paths
+- No error handling yet for error state from the hooks
+- Added formatting and comments

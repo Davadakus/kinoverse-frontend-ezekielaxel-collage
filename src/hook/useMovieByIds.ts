@@ -20,7 +20,7 @@ export function useMoviesByIds(ids: number[] | null) {
       .then(setFilteredMovies)
       .catch(setError)
       .finally(() => setFilteredLoading(false));
-  }, [ids?.join(",")]);
+  }, [ids?.join(",")]); // Workaround to check for updated value using string instead of array
 
   return { filteredMovies, filteredLoading, error };
 }

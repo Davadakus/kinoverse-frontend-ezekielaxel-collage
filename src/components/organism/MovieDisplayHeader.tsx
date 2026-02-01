@@ -5,9 +5,9 @@ import { useMovieEmotions } from "../../hook/useMovieEmotion";
 import { useTopEmotionCount } from "../../hook/useTopEmotionCount";
 import TopEmotionDisplay from "../molecules/TopEmotionDisplay";
 import MovieImage from "../atoms/MovieImage";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import { useNavigate } from "react-router-dom";
+
 import { formatYear } from "../../utils/releaseYear";
+import BackButton from "../molecules/BackButton";
 
 interface MovieDisplayHeaderProps {
   movie: Movie;
@@ -18,25 +18,12 @@ interface MovieDisplayHeaderProps {
 export default function MovieDisplayHeader({ movie }: MovieDisplayHeaderProps) {
   const { movieEmotion, setMovieEmotion } = useMovieEmotions(movie.id);
   const { sortedEmotion } = useTopEmotionCount(movieEmotion);
-  const navigate = useNavigate();
 
   return (
     <div className="flex flex-col bg-neutral-800/40 p-2 px-6">
       <div className="flex flex-row">
         <div className="w-40 xl:w-60 2xl:w-80">
-          <Button
-            startIcon={<ArrowBackIosNewIcon />}
-            color="inherit"
-            sx={{
-              marginBottom: 1,
-              "&:hover": {
-                bgcolor: "surface.hover",
-              },
-            }}
-            onClick={() => navigate(-1)}
-          >
-            Back
-          </Button>
+          <BackButton />
           <MovieImage movie={movie} />
         </div>
 

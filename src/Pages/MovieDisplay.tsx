@@ -11,7 +11,7 @@ export default function MovieDisplay() {
   const { id } = useParams<{ id: string }>();
 
   if (!id) {
-    return <Navigate to="/" replace />; // or show an error message
+    return <Navigate to="/" replace />;
   }
 
   const { movie, loadingMovieBId } = useMovieById(Number(id));
@@ -27,14 +27,13 @@ export default function MovieDisplay() {
               <CircularProgress color="inherit" size={80} />
             </div>
           ) : movie === null ? (
-            // Please fix this
-            <div> movieNotFound</div>
+            <Navigate to="/error" replace />
           ) : (
             <MovieDisplayHeader movie={movie} />
           )}
         </ParallaxLayer>
         <ParallaxLayer offset={0.8} speed={1}>
-          <MovieRecommendation id={id!} />
+          <MovieRecommendation id={id} />
         </ParallaxLayer>
       </Parallax>
     </div>
