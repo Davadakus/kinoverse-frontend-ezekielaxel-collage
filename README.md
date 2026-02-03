@@ -30,6 +30,7 @@ Instead, you will **extend this existing structure** as you work through the ind
 ## 🧱 What This Project Includes
 
 This starter project includes:
+
 - React
 - TypeScript
 - Vite (modern frontend build tool)
@@ -37,6 +38,7 @@ This starter project includes:
 - A working development server with hot reload
 
 This project intentionally does **not** include:
+
 - UI libraries (e.g. Material UI)
 - Routing
 - API services
@@ -59,6 +61,7 @@ There are no example components or reference implementations provided in this st
 This is deliberate.
 
 You are expected to:
+
 - design the component structure yourself
 - decide where logic should live
 - add libraries incrementally as needed
@@ -73,6 +76,7 @@ This mirrors real-world frontend development, where structure evolves as feature
 Even though this project is empty, there are a few files you should understand before building.
 
 ### 1) `index.html`
+
 - The single HTML entry point for the application
 - React mounts into the <div id="root"></div> element
 - You generally won’t modify this often
@@ -80,6 +84,7 @@ Even though this project is empty, there are a few files you should understand b
 ---
 
 ### 2) `src/main.tsx`
+
 - The application entry point
 - Creates the React root
 - Attaches React to the DOM
@@ -87,6 +92,7 @@ Even though this project is empty, there are a few files you should understand b
 ---
 
 ### 3) `src/App.tsx`
+
 - The root React component
 - This is where your application UI begins
 - You will gradually expand and refactor this file as your app grows
@@ -94,6 +100,7 @@ Even though this project is empty, there are a few files you should understand b
 ---
 
 ### 4) `vite.config.ts`
+
 - Configuration for the Vite build tool
 - Controls dev server behaviour and build settings
 - You typically won’t need to modify this early on
@@ -101,6 +108,7 @@ Even though this project is empty, there are a few files you should understand b
 ---
 
 ### 5) `package.json`
+
 - Defines dependencies and scripts
 - Pay attention to:
   - `dev` script: starts the development server
@@ -117,6 +125,7 @@ From the project root:
 npm install
 npm run dev
 ```
+
 Once the development server starts, your terminal will display a local URL (usually http://localhost:5173).
 
 Open this URL in your browser.
@@ -128,6 +137,7 @@ If you see the default Vite + React screen, your setup is complete.
 ## 🧪 How to Verify Your Setup
 
 Your local setup is correct if:
+
 - the app runs without errors
 - the browser displays the default React screen
 - editing src/App.tsx updates the UI instantly
@@ -138,6 +148,7 @@ If all of the above work, you are ready to begin the induction project.
 ---
 
 ## 📄 Additional Template Guide
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
@@ -155,9 +166,9 @@ If you are developing a production application, we recommend updating the config
 
 ```js
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores(["dist"]),
   {
-    files: ['**/*.{ts,tsx}'],
+    files: ["**/*.{ts,tsx}"],
     extends: [
       // Other configs...
 
@@ -172,40 +183,58 @@ export default defineConfig([
     ],
     languageOptions: {
       parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
         tsconfigRootDir: import.meta.dirname,
       },
       // other options...
     },
   },
-])
+]);
 ```
 
 You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
 ```js
 // eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+import reactX from "eslint-plugin-react-x";
+import reactDom from "eslint-plugin-react-dom";
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores(["dist"]),
   {
-    files: ['**/*.{ts,tsx}'],
+    files: ["**/*.{ts,tsx}"],
     extends: [
       // Other configs...
       // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
+      reactX.configs["recommended-typescript"],
       // Enable lint rules for React DOM
       reactDom.configs.recommended,
     ],
     languageOptions: {
       parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
         tsconfigRootDir: import.meta.dirname,
       },
       // other options...
     },
   },
-])
+]);
 ```
+
+# Additional Notes
+
+## How to install
+
+Simply `npm install` when you first open the project to download all necessary libraries for the project
+
+## How to add TMDb API Key
+
+1. Make a TMDb account and once verified, generate an API key
+2. Once generated, make a copy of `.env.example` in the root directroy and rename it as your `.env` file
+3. Add the key and access token to the `.env` file
+
+## How to run app
+
+Simply run `npm run dev` on the console and access the website
+
+> Default path: `http://localhost:5173/`
