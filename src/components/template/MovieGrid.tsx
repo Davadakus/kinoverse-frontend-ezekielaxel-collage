@@ -10,20 +10,22 @@ interface MovieGridProps {
 }
 
 export default function MovieGrid({ selectedEmotions }: MovieGridProps) {
-  const { movies, loading } = useMovies();
-
-  // Need to reconsider usage of these 2 hooks later
+  const { movies, moviesLoading } = useMovies();
   const filteredMovieIds = useMovieFilter(selectedEmotions);
-  const { filteredMovies, filteredLoading } = useMoviesByIds(filteredMovieIds);
+  const isFiltering = filteredMovieIds !== null; // False if null so it display ALL movies
+
+  const { filteredMovies, filteredMoviesLoading, filteredMoviesError } =
+    useMoviesByIds(filteredMovieIds);
+  const isLoading = isFiltering ? filteredMoviesLoading : moviesLoading; // Combines loading into this var
 
   return (
     <div className="mx-30">
-      {loading ? (
+      {isLoading ? (
         <div className="flex flex-1 items-center justify-center">
           <CircularProgress color="inherit" size={80} />
         </div>
       ) : // Default State
-      filteredMovieIds === null ? (
+      !isFiltering ? (
         <div className="grid grid-flow-row grid-cols-4 gap-20">
           {movies.map((movie) => (
             <MovieCard key={movie.id} movie={movie} />
@@ -33,6 +35,11 @@ export default function MovieGrid({ selectedEmotions }: MovieGridProps) {
       filteredMovies.length === 0 ? (
         <Typography variant="h5" component="div" fontWeight="bold">
           No Movies Found...
+        </Typography>
+      ) : // Error
+      filteredMoviesError ? (
+        <Typography variant="h5" component="div" fontWeight="bold">
+          There was an error trying to load the movies...
         </Typography>
       ) : (
         // Movies in filter

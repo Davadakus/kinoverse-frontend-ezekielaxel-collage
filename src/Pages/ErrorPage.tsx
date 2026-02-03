@@ -13,8 +13,8 @@ export default function ErrorPage() {
     <div className="flex h-screen flex-col text-center">
       <Title title="Page Not Found" />
       <Typography variant="h5" component="div">
-        Hmm thats odd... seems like you entered an invalid page. Please make
-        sure you entered a valid path...
+        Hmm thats odd... seems like you entered an invalid page. Please return
+        to the main menu and start over...
       </Typography>
       <div className="mx-auto my-10 flex">
         <Button

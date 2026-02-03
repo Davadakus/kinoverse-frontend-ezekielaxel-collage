@@ -4,15 +4,15 @@ import type { Movie } from "../types/movie";
 
 export function useMovies() {
   const [movies, setMovies] = useState<Movie[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<Error | null>(null);
+  const [moviesLoading, setMoviesLoading] = useState(true);
+  const [moviesError, setMoviesError] = useState<Error | null>(null);
 
   useEffect(() => {
     getMovies()
       .then(setMovies)
-      .catch(setError)
-      .finally(() => setLoading(false));
+      .catch(setMoviesError)
+      .finally(() => setMoviesLoading(false));
   }, []);
 
-  return { movies, loading, error };
+  return { movies, moviesLoading, moviesError };
 }

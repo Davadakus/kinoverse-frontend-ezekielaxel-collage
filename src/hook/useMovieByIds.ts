@@ -2,25 +2,28 @@ import { useEffect, useState } from "react";
 import { getMoviesByIds } from "../api/movies";
 import type { Movie } from "../types/movie";
 
+// This gets the list of Movie Id's that have been filtered and returns them in Movie datatype to be used
 export function useMoviesByIds(ids: number[] | null) {
   const [filteredMovies, setFilteredMovies] = useState<Movie[]>([]);
-  const [filteredLoading, setFilteredLoading] = useState(false);
-  const [error, setError] = useState<Error | null>(null);
+  const [filteredMoviesLoading, setFilteredMoviesLoading] = useState(false);
+  const [filteredMoviesError, setFilteredMoviesError] = useState<Error | null>(
+    null,
+  );
 
   useEffect(() => {
     if (!ids || ids.length === 0) {
       setFilteredMovies([]);
-      setFilteredLoading(false);
+      setFilteredMoviesLoading(false);
       return;
     }
 
-    setFilteredLoading(true);
+    setFilteredMoviesLoading(true);
 
     getMoviesByIds(ids)
       .then(setFilteredMovies)
-      .catch(setError)
-      .finally(() => setFilteredLoading(false));
-  }, [ids?.join(",")]); // Workaround to check for updated value using string instead of array
+      .catch(setFilteredMoviesError)
+      .finally(() => setFilteredMoviesLoading(false));
+  }, [ids?.join(",")]); // Workaround to check for updated value using string instead of array since react compares array references
 
-  return { filteredMovies, filteredLoading, error };
+  return { filteredMovies, filteredMoviesLoading, filteredMoviesError };
 }

@@ -2,6 +2,7 @@ import { Card, CardContent, Typography } from "@mui/material";
 import type { Movie } from "../../types/movie";
 import { Link } from "react-router-dom";
 import MovieImage from "../atoms/MovieImage";
+import { formatYear } from "../../utils/releaseYear";
 
 interface MovieSuggestionProps {
   movie: Movie;
@@ -43,7 +44,7 @@ export default function MovieSuggestion({ movie }: MovieSuggestionProps) {
             {movie.title}
           </Typography>
           <Typography gutterBottom variant="subtitle2" component="div">
-            {movie.release_date.slice(0, 4)}
+            {formatYear(movie.release_date)}
           </Typography>
           <Typography
             variant="caption"

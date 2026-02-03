@@ -21,7 +21,7 @@ export default function TopEmotionDisplay({ value }: TopEmotionDisplayProps) {
   return (
     <div className="m-2 flex flex-col items-center rounded-xl bg-[#282828] p-2">
       <Typography variant="body1" fontWeight="bold">
-        Top Emotion:{" "}
+        Top Emotion:
       </Typography>
       <div className="flex flex-row gap-3">
         {value.map(([emotion, count]) => {
