@@ -35,6 +35,8 @@ export default function EmotionalRatingBtn({
         <ToggleButton
           key={item.value}
           value={item.value}
+          aria-label={item.value}
+          data-testid={item.value}
           sx={{
             "&.Mui-selected": {
               bgcolor: "surface.hover",

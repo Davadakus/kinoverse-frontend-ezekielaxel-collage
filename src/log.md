@@ -108,3 +108,8 @@
 - Error handling for going to non existent paths
 - No error handling yet for error state from the hooks
 - Added formatting and comments
+
+# Day 18 - 11/02/36
+
+- Setup testing config with babel and jest
+- Made a test for emotional tagging
