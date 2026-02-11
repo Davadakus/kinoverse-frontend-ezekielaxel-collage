@@ -109,7 +109,18 @@
 - No error handling yet for error state from the hooks
 - Added formatting and comments
 
-# Day 18 - 11/02/36
+# Day 18 - 10/02/26
 
 - Setup testing config with babel and jest
 - Made a test for emotional tagging
+
+# Day 19 - 11/02/26
+
+Order to do:
+
+- Testing (lots)
+- Pagination (1 day)
+- Sorting (1 day)
+- Search (1-2 day)
+
+So far i have only added the pagination element but not real functionality yet

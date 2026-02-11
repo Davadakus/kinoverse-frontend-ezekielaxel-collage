@@ -5,18 +5,17 @@ import type { Emotion } from "../types/emotion";
 import MovieGrid from "../components/template/MovieGrid";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import AnimatedBackground from "../components/atoms/AnimatedBackground";
-import MovingText from "../components/atoms/MovingText";
+import { Stack, Pagination } from "@mui/material";
 
 export default function MainScreen() {
   const [selectedEmotions, setSelectedEmotions] = useState<Emotion[]>([]);
-
+  const [page, setPage] = useState(1);
   return (
     <div className="flex h-screen flex-col">
       <AnimatedBackground />
       <Parallax pages={3.3}>
         <ParallaxLayer offset={0} speed={0.1}>
           <Title title="KinoVerse" />
-          <MovingText className="mb-10" title="KinoVerse" />
         </ParallaxLayer>
         <ParallaxLayer offset={0.2} speed={0.2}>
           <EmotionButtonStore
@@ -29,7 +28,31 @@ export default function MainScreen() {
         </ParallaxLayer>
         <ParallaxLayer offset={0.4} speed={0.4}>
           <MovieGrid selectedEmotions={selectedEmotions} />
-          <MovingText className="mt-10" title="KinoVerse" />
+
+          <Pagination
+            className="flex justify-center align-middle"
+            size="large"
+            sx={{
+              "& .MuiPaginationItem-root": {
+                color: "#FFFFFF", // number color
+                borderColor: "#FFFFFF", // outline color
+              },
+              "& .Mui-selected": {
+                backgroundColor: "surface.hover",
+                color: "#fff",
+                borderColor: "#FFFFFF",
+              },
+              "& .MuiPaginationItem-root:hover": {
+                backgroundColor: "rgba(25, 118, 210, 0.1)",
+              },
+
+              // fontSize: "50",
+            }}
+            count={10}
+            defaultPage={1}
+            variant="outlined"
+            shape="rounded"
+          />
         </ParallaxLayer>
       </Parallax>
     </div>
