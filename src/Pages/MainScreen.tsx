@@ -1,15 +1,50 @@
 import Title from "../components/atoms/Title";
 import EmotionButtonStore from "../components/molecules/EmotionButtonStore";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Emotion } from "../types/emotion";
 import MovieGrid from "../components/template/MovieGrid";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import AnimatedBackground from "../components/atoms/AnimatedBackground";
-import { Stack, Pagination } from "@mui/material";
+import { CircularProgress, Pagination } from "@mui/material";
+import { useMoviesByIds } from "../hook/useMovieByIds";
+import { useMovieFilter } from "../hook/useMovieFilter";
+import { useMovies } from "../hook/useMovies";
 
 export default function MainScreen() {
-  const [selectedEmotions, setSelectedEmotions] = useState<Emotion[]>([]);
+  const moviePerPage = 10;
   const [page, setPage] = useState(1);
+
+  const [selectedEmotions, setSelectedEmotions] = useState<Emotion[]>([]);
+
+  const { movies, moviesLoading } = useMovies();
+  const filteredMovieIds = useMovieFilter(selectedEmotions);
+  const isFiltering = filteredMovieIds !== null; // False if null so it display ALL movies
+
+  const { filteredMovies, filteredMoviesLoading, filteredMoviesError } =
+    useMoviesByIds(filteredMovieIds);
+
+  const isLoading = isFiltering ? filteredMoviesLoading : moviesLoading; // Combines loading into this var
+  const allMovies = isFiltering ? filteredMovies : movies;
+
+  const startIndex = (page - 1) * moviePerPage;
+  const endIndex = startIndex + moviePerPage;
+
+  // Decide which list to use for rendering
+  const moviesToRender = isFiltering
+    ? filteredMovies.slice(startIndex, endIndex)
+    : movies.slice(startIndex, endIndex);
+
+  useEffect(() => {
+    setPage(1);
+  }, [selectedEmotions]);
+
+  const totalPages = Math.ceil(allMovies.length / moviePerPage);
+
+  const start = (page - 1) * moviePerPage;
+  const paginatedMovies = allMovies.slice(start, start + moviePerPage);
+
+  if (isLoading) return <CircularProgress />;
+
   return (
     <div className="flex h-screen flex-col">
       <AnimatedBackground />
@@ -27,18 +62,23 @@ export default function MainScreen() {
           />
         </ParallaxLayer>
         <ParallaxLayer offset={0.4} speed={0.4}>
-          <MovieGrid selectedEmotions={selectedEmotions} />
-
+          <MovieGrid movies={paginatedMovies} />
           <Pagination
             className="flex justify-center align-middle"
+            onChange={(_, value) => setPage(value)}
             size="large"
+            count={totalPages}
+            defaultPage={1}
+            page={page}
+            variant="outlined"
+            shape="rounded"
             sx={{
               "& .MuiPaginationItem-root": {
                 color: "#FFFFFF", // number color
                 borderColor: "#FFFFFF", // outline color
               },
               "& .Mui-selected": {
-                backgroundColor: "surface.hover",
+                backgroundColor: "#surface.hover",
                 color: "#fff",
                 borderColor: "#FFFFFF",
               },
@@ -48,10 +88,6 @@ export default function MainScreen() {
 
               // fontSize: "50",
             }}
-            count={10}
-            defaultPage={1}
-            variant="outlined"
-            shape="rounded"
           />
         </ParallaxLayer>
       </Parallax>

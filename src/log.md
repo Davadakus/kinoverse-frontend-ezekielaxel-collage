@@ -124,3 +124,9 @@ Order to do:
 - Search (1-2 day)
 
 So far i have only added the pagination element but not real functionality yet
+
+# Day 20 - 13/02/26
+
+- Roughly implemented the pagination
+- Need to error handle again since moves the logic from the movie grid to the parent
+- Pagination needs to look cleaner as well, possibly make a new component for it
