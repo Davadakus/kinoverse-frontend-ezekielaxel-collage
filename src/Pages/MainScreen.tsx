@@ -5,10 +5,17 @@ import type { Emotion } from "../types/emotion";
 import MovieGrid from "../components/template/MovieGrid";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import AnimatedBackground from "../components/atoms/AnimatedBackground";
-import { CircularProgress, Pagination } from "@mui/material";
+import {
+  Box,
+  CircularProgress,
+  InputAdornment,
+  Pagination,
+  TextField,
+} from "@mui/material";
 import { useMoviesByIds } from "../hook/useMovieByIds";
 import { useMovieFilter } from "../hook/useMovieFilter";
 import { useMovies } from "../hook/useMovies";
+import SearchBar from "../components/molecules/SearchBar";
 
 export default function MainScreen() {
   const moviePerPage = 10;
@@ -53,13 +60,16 @@ export default function MainScreen() {
           <Title title="KinoVerse" />
         </ParallaxLayer>
         <ParallaxLayer offset={0.2} speed={0.2}>
-          <EmotionButtonStore
-            type="filter"
-            title="Filter:"
-            className="mx-15 my-5 flex"
-            value={selectedEmotions}
-            onChange={setSelectedEmotions}
-          />
+          <div className="flex flex-row items-center justify-center">
+            <EmotionButtonStore
+              type="filter"
+              title="Filter:"
+              className="mx-15 my-5 flex"
+              value={selectedEmotions}
+              onChange={setSelectedEmotions}
+            />
+            <SearchBar />
+          </div>
         </ParallaxLayer>
         <ParallaxLayer offset={0.4} speed={0.4}>
           <MovieGrid movies={paginatedMovies} />
