@@ -18,7 +18,7 @@ export default function MovieGrid({ movies }: MovieGridProps) {
   }
 
   return (
-    <div className="align-center mx-10 grid grid-cols-4 place-items-center gap-20">
+    <div className="align-center mx-10 mt-8 grid grid-cols-4 place-items-center gap-20">
       {movies.map((movie) => (
         <MovieCard key={movie.id} movie={movie} />
       ))}

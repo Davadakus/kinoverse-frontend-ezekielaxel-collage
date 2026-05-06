@@ -130,3 +130,12 @@ So far i have only added the pagination element but not real functionality yet
 - Roughly implemented the pagination
 - Need to error handle again since moves the logic from the movie grid to the parent
 - Pagination needs to look cleaner as well, possibly make a new component for it
+
+# Day 21 - 01/04/26
+
+- Search Implementation
+
+# Day 22 - 06/05/26
+
+- Took off the paralax effect to code initial code form better
+- Changed some colors for pagination and search

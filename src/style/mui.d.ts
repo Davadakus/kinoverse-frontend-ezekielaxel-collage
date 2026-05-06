@@ -6,6 +6,11 @@ declare module "@mui/material/styles" {
       background: string;
       foreground: string;
       hover: string;
+      selected: string;
+    };
+
+    color: {
+      white: string;
     };
   }
 
@@ -14,6 +19,11 @@ declare module "@mui/material/styles" {
       background: string;
       foreground: string;
       hover: string;
+      selected: string;
+    };
+
+    color?: {
+      white: string;
     };
   }
 }

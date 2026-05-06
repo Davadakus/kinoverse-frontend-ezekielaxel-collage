@@ -6,6 +6,10 @@ export const theme = createTheme({
       background: "var(--bg-default)",
       foreground: "#1E1E1E",
       hover: "#282828",
+      selected: "#3D3D3D",
+    },
+    color: {
+      white: "#FFFFFF",
     },
   },
 });
