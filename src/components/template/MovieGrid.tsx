@@ -6,10 +6,11 @@ import type { Movie } from "../../types/movie";
 
 interface MovieGridProps {
   movies: Movie[];
+  isLoading?: boolean;
 }
 
-export default function MovieGrid({ movies }: MovieGridProps) {
-  if (movies.length === 0) {
+export default function MovieGrid({ movies, isLoading }: MovieGridProps) {
+  if (!isLoading && movies.length === 0) {
     return (
       <Typography variant="h5" fontWeight="bold">
         No Movies Found...

@@ -16,6 +16,7 @@ import { useMoviesByIds } from "../hook/useMovieByIds";
 import { useMovieFilter } from "../hook/useMovieFilter";
 import { useMovies } from "../hook/useMovies";
 import SearchBar from "../components/molecules/SearchBar";
+import type { SortOrder } from "../types/sortOrder";
 
 export default function MainScreen() {
   const moviePerPage = 10;
@@ -30,15 +31,28 @@ export default function MainScreen() {
   const { filteredMovies, filteredMoviesLoading, filteredMoviesError } =
     useMoviesByIds(filteredMovieIds);
 
-  const [searchQuery, setSearchQuery] = useState(""); // Search String
-  const isLoading = isFiltering ? filteredMoviesLoading : moviesLoading; // Combines loading into this var
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortOrder, setSortOrder] = useState<SortOrder>("az");
+  const isLoading = isFiltering ? filteredMoviesLoading : moviesLoading;
 
+  // Filtering
   var allMovies = isFiltering ? filteredMovies : movies;
+
+  // Search
   if (searchQuery) {
     allMovies = allMovies.filter((movie) =>
       movie.title.toLowerCase().includes(searchQuery.toLowerCase()),
     );
   }
+
+  // Sort
+  allMovies = [...allMovies].sort((a, b) => {
+    if (sortOrder === "newest")
+      return b.release_date.localeCompare(a.release_date);
+    if (sortOrder === "oldest")
+      return a.release_date.localeCompare(b.release_date);
+    return a.title.localeCompare(b.title);
+  });
 
   const startIndex = (page - 1) * moviePerPage;
   const endIndex = startIndex + moviePerPage;
@@ -57,8 +71,6 @@ export default function MainScreen() {
   const start = (page - 1) * moviePerPage;
   const paginatedMovies = allMovies.slice(start, start + moviePerPage);
 
-  if (isLoading) return <CircularProgress />;
-
   return (
     <div className="flex h-screen flex-col">
       {/* <AnimatedBackground /> */}
@@ -76,12 +88,20 @@ export default function MainScreen() {
           onChange={setSelectedEmotions}
         />
         <div className="absolute left-1/2 -translate-x-1/2">
-          <SearchBar onSearch={setSearchQuery} />
+          <SearchBar onSearch={setSearchQuery} onSort={setSortOrder} />
         </div>
       </div>
       {/* </ParallaxLayer> */}
       {/* <ParallaxLayer offset={0.35} speed={0.4}> */}
-      <MovieGrid movies={paginatedMovies} />
+
+      {isLoading ? (
+        <div className="my-20 flex flex-1 items-center justify-center">
+          <CircularProgress color="inherit" size={80} />
+        </div>
+      ) : (
+        <MovieGrid movies={paginatedMovies} isLoading={isLoading} />
+      )}
+
       <Pagination
         className="flex justify-center py-10 align-middle"
         onChange={(_, value) => setPage(value)}

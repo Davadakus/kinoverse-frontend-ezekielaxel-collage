@@ -7,15 +7,16 @@ import {
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useEffect, useState } from "react";
-import React from "react";
 import PopupState, { bindMenu, bindTrigger } from "material-ui-popup-state";
 import SortIcon from "@mui/icons-material/Sort";
+import type { SortOrder } from "../../types/sortOrder";
 
 type SearchBarProps = {
   onSearch: (query: string) => void;
+  onSort: (sort: SortOrder) => void;
 };
 
-export default function SearchBar({ onSearch }: SearchBarProps) {
+export default function SearchBar({ onSearch, onSort }: SearchBarProps) {
   const [name, setName] = useState("");
 
   useEffect(() => {
@@ -41,9 +42,30 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
               <SortIcon />
             </Button>
             <Menu {...bindMenu(popupState)}>
-              <MenuItem onClick={popupState.close}>Newest</MenuItem>
-              <MenuItem onClick={popupState.close}>Oldest</MenuItem>
-              <MenuItem onClick={popupState.close}>A-Z</MenuItem>
+              <MenuItem
+                onClick={() => {
+                  onSort("newest");
+                  popupState.close();
+                }}
+              >
+                Newest
+              </MenuItem>
+              <MenuItem
+                onClick={() => {
+                  onSort("oldest");
+                  popupState.close();
+                }}
+              >
+                Oldest
+              </MenuItem>
+              <MenuItem
+                onClick={() => {
+                  onSort("az");
+                  popupState.close();
+                }}
+              >
+                A-Z
+              </MenuItem>
             </Menu>
           </div>
         )}

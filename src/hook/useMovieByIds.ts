@@ -5,25 +5,34 @@ import type { Movie } from "../types/movie";
 // This gets the list of Movie Id's that have been filtered and returns them in Movie datatype to be used
 export function useMoviesByIds(ids: number[] | null) {
   const [filteredMovies, setFilteredMovies] = useState<Movie[]>([]);
-  const [filteredMoviesLoading, setFilteredMoviesLoading] = useState(false);
+  const [resolvedIdsKey, setResolvedIdsKey] = useState<string | null>(null);
   const [filteredMoviesError, setFilteredMoviesError] = useState<Error | null>(
     null,
   );
 
+  const idsKey = ids && ids.length > 0 ? ids.join(",") : null;
+
   useEffect(() => {
-    if (!ids || ids.length === 0) {
+    if (!idsKey) {
       setFilteredMovies([]);
-      setFilteredMoviesLoading(false);
+      setResolvedIdsKey(null);
       return;
     }
 
-    setFilteredMoviesLoading(true);
+    getMoviesByIds(ids!)
+      .then((movies) => {
+        setFilteredMovies(movies);
+        setResolvedIdsKey(idsKey);
+      })
+      .catch((err) => {
+        setFilteredMoviesError(err);
+        setResolvedIdsKey(idsKey);
+      });
+  }, [idsKey]);
 
-    getMoviesByIds(ids)
-      .then(setFilteredMovies)
-      .catch(setFilteredMoviesError)
-      .finally(() => setFilteredMoviesLoading(false));
-  }, [ids?.join(",")]); // Workaround to check for updated value using string instead of array since react compares array references
+  // Derived: loading whenever there are IDs to fetch but they haven't resolved yet.
+  // This avoids a render gap where a separate `loading` state hasn't been set yet.
+  const filteredMoviesLoading = idsKey !== null && idsKey !== resolvedIdsKey;
 
   return { filteredMovies, filteredMoviesLoading, filteredMoviesError };
 }
